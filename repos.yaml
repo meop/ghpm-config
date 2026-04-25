@@ -1,4 +1,9 @@
 ---
 repos:
+  bun: github.com/oven-sh/bun
+  claude: github.com/anthropics/claude-code
+  deno: github.com/denoland/deno
   fzf: github.com/junegunn/fzf
+  nu: github.com/nushell/nushell
   opencode: github.com/anomalyco/opencode
+  pwsh: github.com/PowerShell/PowerShell
