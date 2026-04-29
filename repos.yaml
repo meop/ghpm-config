@@ -4,6 +4,7 @@ repos:
   claude: github.com/anthropics/claude-code
   deno: github.com/denoland/deno
   fzf: github.com/junegunn/fzf
+  nvim: github.com/neovim/neovim
   nu: github.com/nushell/nushell
   opencode: github.com/anomalyco/opencode
   pwsh: github.com/PowerShell/PowerShell
