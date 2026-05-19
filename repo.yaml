@@ -8,3 +8,4 @@ repos:
   nu: github.com/nushell/nushell
   opencode: github.com/anomalyco/opencode
   pwsh: github.com/PowerShell/PowerShell
+  yay: github.com/Jguer/yay
