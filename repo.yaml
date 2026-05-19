@@ -4,6 +4,7 @@ repos:
   btm: github.com/ClementTsang/bottom
   bun: github.com/oven-sh/bun
   claude: github.com/anthropics/claude-code
+  codex: github.com/openai/codex
   deno: github.com/denoland/deno
   dust: github.com/bootandy/dust
   eza: github.com/eza-community/eza
