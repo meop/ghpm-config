@@ -1,11 +1,23 @@
 ---
 repos:
+  bat: github.com/sharkdp/bat
+  btm: github.com/ClementTsang/bottom
   bun: github.com/oven-sh/bun
   claude: github.com/anthropics/claude-code
   deno: github.com/denoland/deno
+  dust: github.com/bootandy/dust
+  eza: github.com/eza-community/eza
+  fd: github.com/sharkdp/fd
   fzf: github.com/junegunn/fzf
+  hyperfine: github.com/sharkdp/hyperfine
   nvim: github.com/neovim/neovim
   nu: github.com/nushell/nushell
   opencode: github.com/anomalyco/opencode
+  pnpm: github.com/pnpm/pnpm
   pwsh: github.com/PowerShell/PowerShell
+  rg: github.com/BurntSushi/ripgrep
+  starship: github.com/starship/starship
+  uv: github.com/astral-sh/uv
   yay: github.com/Jguer/yay
+  zellij: github.com/zellij-org/zellij
+  zoxide: github.com/ajeetdsouza/zoxide
