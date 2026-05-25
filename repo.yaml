@@ -24,6 +24,7 @@ repos:
   procs: github.com/dalance/procs
   pwsh: github.com/PowerShell/PowerShell
   rg: github.com/BurntSushi/ripgrep
+  rv: github.com/spinel-coop/rv
   ruff: github.com/astral-sh/ruff
   scc: github.com/boyter/scc
   sd: github.com/chmin/sd
@@ -34,3 +35,4 @@ repos:
   yq: github.com/mikefarah/yq
   zellij: github.com/zellij-org/zellij
   zoxide: github.com/ajeetdsouza/zoxide
+  zstd: github.com/facebook/zstd
