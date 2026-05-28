@@ -17,6 +17,7 @@ repos:
   fzf: github.com/junegunn/fzf
   golangci-lint: github.com/golangci/golangci-lint
   hyperfine: github.com/sharkdp/hyperfine
+  nerd-fonts: github.com/ryanoasis/nerd-fonts
   nvim: github.com/neovim/neovim
   nu: github.com/nushell/nushell
   opencode: github.com/anomalyco/opencode
