@@ -6,6 +6,7 @@ repos:
   broot: github.com/Canop/broot
   btm: github.com/ClementTsang/bottom
   bun: github.com/oven-sh/bun
+  caddy: github.com/caddyserver/caddy
   claude: github.com/anthropics/claude-code
   codex: github.com/openai/codex
   delta: github.com/dandavison/delta
