@@ -31,6 +31,8 @@ repos:
   scc: github.com/boyter/scc
   sd: github.com/chmin/sd
   starship: github.com/starship/starship
+  tokei: github.com/XAMPPRocky/tokei
+  tree-sitter: github.com/tree-sitter/tree-sitter
   uv: github.com/astral-sh/uv
   yay: github.com/Jguer/yay
   yazi: github.com/sxyazi/yazi
