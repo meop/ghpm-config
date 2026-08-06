@@ -19,4 +19,4 @@ Open a PR editing `repo.toml`. The key is the short name users type, the value i
 
 ## License
 
-[MIT](LICENSE.txt)
+[MIT](LICENSE)
