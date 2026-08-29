@@ -23,5 +23,4 @@ needs to be demonstrated.
 | Vivid | `linux-arm64-abi-release` | Linux ARM64 musl | Existing Windows ARM [PR #228](https://github.com/sharkdp/vivid/pull/228) is merged; Linux-musl addition untested | Add ARM64 musl to the release matrix and run its packaging path. |
 | mdBook | `linux-arm64-abi-release` | Linux ARM64 GNU | Existing Windows ARM [PR #3193](https://github.com/rust-lang/mdBook/pull/3193) is merged; Linux GNU release path untested | Locate the release mechanism, then prove an ARM64 GNU package. |
 | Pastel | `linux-arm64-abi-release` | Linux ARM64 musl | Existing Windows ARM [PR #320](https://github.com/sharkdp/pastel/pull/320) is open; Linux-musl fork CI is queued | Wait for the fork matrix result. |
-| Tealdeer | — | macOS ARM64 | [#365](https://github.com/tealdeer-rs/tealdeer/issues/365) said an ARM release would be added, but current releases have no macOS assets | Inspect the release path and make a fork proof branch. |
 | Typos | `ci/platform-release-matrix` | Windows ARM64 MSVC | Upstream [PR #1602](https://github.com/crate-ci/typos/pull/1602) is open with a successful fork release matrix | Await upstream release. |
