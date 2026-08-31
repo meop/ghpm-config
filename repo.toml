@@ -1,87 +1,330 @@
-actionlint = "github.com/rhysd/actionlint"
-age = "github.com/FiloSottile/age"                  # https://github.com/FiloSottile/age/issues/733 *
-ast-grep = "github.com/ast-grep/ast-grep"
-atuin = "github.com/atuinsh/atuin"                  # https://github.com/atuinsh/atuin/issues/3056 *
-bat = "github.com/sharkdp/bat"
-biome = "github.com/biomejs/biome"
-btm = "github.com/ClementTsang/bottom"
-bun = "github.com/oven-sh/bun"
-caddy = "github.com/caddyserver/caddy"
-chezmoi = "github.com/twpayne/chezmoi"
-claude = "github.com/anthropics/claude-code"
-codegraph = "github.com/colbymchenry/codegraph"
-codex = "github.com/openai/codex"
-croc = "github.com/schollz/croc"
-delta = "github.com/dandavison/delta"               # https://github.com/dandavison/delta/issues/2223 * ****
-deno = "github.com/denoland/deno"
-difftastic = "github.com/Wilfred/difftastic"
-direnv = "github.com/direnv/direnv"
-dive = "github.com/wagoodman/dive"
-dprint = "github.com/dprint/dprint"
-dua = "github.com/Byron/dua-cli"
-duf = "github.com/muesli/duf"
-dust = "github.com/bootandy/dust"
-fastfetch = "github.com/fastfetch-cli/fastfetch"
-fd = "github.com/sharkdp/fd"
-fzf = "github.com/junegunn/fzf"
-gdu = "github.com/dundee/gdu"                       # ? *
-git-lfs = "github.com/git-lfs/git-lfs"
-glow = "github.com/charmbracelet/glow"              # ? *
-golangci-lint = "github.com/golangci/golangci-lint"
-goreleaser = "github.com/goreleaser/goreleaser"
-grpcurl = "github.com/fullstorydev/grpcurl"         # https://github.com/fullstorydev/grpcurl/issues/541 *
-gum = "github.com/charmbracelet/gum"                # ? *
-helix = "github.com/helix-editor/helix"             # https://github.com/helix-editor/helix/issues/10872 *
-hexyl = "github.com/sharkdp/hexyl"                  # https://github.com/sharkdp/hexyl/pull/291 * ****
-hurl = "github.com/Orange-OpenSource/hurl"          # ? *
-hyperfine = "github.com/sharkdp/hyperfine"          # https://github.com/sharkdp/hyperfine/pull/922 * ****
-jq = "github.com/jqlang/jq"
-just = "github.com/casey/just"
-k9s = "github.com/derailed/k9s"
-lazydocker = "github.com/jesseduffield/lazydocker"
-lazygit = "github.com/jesseduffield/lazygit"
-"llama.cpp" = "github.com/ggml-org/llama.cpp"
-lsd = "github.com/lsd-rs/lsd"                       # https://github.com/lsd-rs/lsd/pull/1236 *
-mdbook = "github.com/rust-lang/mdBook"              # https://github.com/rust-lang/mdBook/pull/3193 * ***
-mise = "github.com/jdx/mise"
-nerd-fonts = "github.com/ryanoasis/nerd-fonts"
-nu = "github.com/nushell/nushell"
-nvim = "github.com/neovim/neovim"
-opencode = "github.com/anomalyco/opencode"          # https://github.com/anomalyco/opencode/issues/45875 *
-ouch = "github.com/ouch-org/ouch"
-pastel = "github.com/sharkdp/pastel"                # https://github.com/sharkdp/pastel/pull/320 * ****
-pnpm = "github.com/pnpm/pnpm"
-procs = "github.com/dalance/procs"                  # https://github.com/dalance/procs/pull/961 *
-psnwdl = "github.com/meop/PSNWDL"
-pwsh = "github.com/PowerShell/PowerShell"
-qsv = "github.com/dathere/qsv"                      # https://github.com/dathere/qsv/issues/2945 * ****
-rclone = "github.com/rclone/rclone"
-restic = "github.com/restic/restic"                 # https://github.com/restic/restic/issues/3596 *
-rg = "github.com/BurntSushi/ripgrep"
-ruff = "github.com/astral-sh/ruff"
-rv = "github.com/spinel-coop/rv"
-scc = "github.com/boyter/scc"
-sd = "github.com/chmln/sd"                          # https://github.com/chmln/sd/issues/329 * ***
-shfmt = "github.com/mvdan/sh"                       # https://github.com/mvdan/sh/issues/1077 *
-sops = "github.com/getsops/sops"
-starship = "github.com/starship/starship"
-stern = "github.com/stern/stern"
-taplo = "github.com/tamasfe/taplo"
-task = "github.com/go-task/task"
-tealdeer = "github.com/dbrgn/tealdeer"
-tree-sitter = "github.com/tree-sitter/tree-sitter"
-typos = "github.com/crate-ci/typos"                 # https://github.com/crate-ci/typos/pull/1602 *
-uv = "github.com/astral-sh/uv"
-vhs = "github.com/charmbracelet/vhs"                # ? *
-vivid = "github.com/sharkdp/vivid"                  # https://github.com/sharkdp/vivid/pull/228 * ****
-watchexec = "github.com/watchexec/watchexec"
-winenvedit = "github.com/meop/WinEnvEdit"
-xan = "github.com/medialab/xan"                     # ? * ****
-yay = "github.com/Jguer/yay"
-yazi = "github.com/sxyazi/yazi"
-yq = "github.com/mikefarah/yq"
-zellij = "github.com/zellij-org/zellij"             # https://github.com/zellij-org/zellij/pull/5090 *
-zoxide = "github.com/ajeetdsouza/zoxide"
+[actionlint]
+uri = "github.com/rhysd/actionlint"
+descr = "Static checker for GitHub Actions workflow files."
+
+[age]  # https://github.com/FiloSottile/age/issues/733 *
+uri = "github.com/FiloSottile/age"
+descr = "Simple, modern file encryption tool with small explicit keys."
+
+[ast-grep]
+uri = "github.com/ast-grep/ast-grep"
+descr = "Structural code search, lint, and rewrite by syntax tree pattern."
+
+[atuin]  # https://github.com/atuinsh/atuin/issues/3056 *
+uri = "github.com/atuinsh/atuin"
+descr = "Shell history replacement with sync, search, and stats."
+
+[bat]
+uri = "github.com/sharkdp/bat"
+descr = "A cat clone with syntax highlighting and git integration."
+
+[biome]
+uri = "github.com/biomejs/biome"
+descr = "Formatter and linter for web projects, replacing Prettier and ESLint."
+
+[btm]
+uri = "github.com/ClementTsang/bottom"
+descr = "Cross-platform graphical process and system monitor."
+
+[bun]
+uri = "github.com/oven-sh/bun"
+descr = "JavaScript runtime, bundler, test runner, and package manager in one."
+
+[caddy]
+uri = "github.com/caddyserver/caddy"
+descr = "HTTP server with automatic HTTPS certificate management."
+
+[chezmoi]
+uri = "github.com/twpayne/chezmoi"
+descr = "Dotfile manager for multiple diverse machines."
+
+[claude]
+uri = "github.com/anthropics/claude-code"
+descr = "Anthropic's agentic coding tool that lives in your terminal."
+
+[codegraph]
+uri = "github.com/colbymchenry/codegraph"
+descr = "Pre-indexed, locally hosted code knowledge graph for coding agents."
+
+[codex]
+uri = "github.com/openai/codex"
+descr = "OpenAI's lightweight coding agent that runs in your terminal."
+
+[croc]
+uri = "github.com/schollz/croc"
+descr = "Send files between computers over an end-to-end encrypted relay."
+
+[delta]  # https://github.com/dandavison/delta/issues/2223 * ****
+uri = "github.com/dandavison/delta"
+descr = "Syntax-highlighting pager for git, diff, and grep output."
+
+[deno]
+uri = "github.com/denoland/deno"
+descr = "A modern runtime for JavaScript and TypeScript."
+
+[difftastic]
+uri = "github.com/Wilfred/difftastic"
+descr = "Structural diff that compares syntax trees rather than lines."
+
+[direnv]
+uri = "github.com/direnv/direnv"
+descr = "Loads and unloads environment variables per directory."
+
+[dive]
+uri = "github.com/wagoodman/dive"
+descr = "Explore the contents of each layer in a container image."
+
+[dprint]
+uri = "github.com/dprint/dprint"
+descr = "Pluggable code formatting platform that unifies your formatters."
+
+[dua]
+uri = "github.com/Byron/dua-cli"
+descr = "Disk usage viewer with an interactive mode for deleting."
+
+[duf]
+uri = "github.com/muesli/duf"
+descr = "A friendlier df, showing disk usage and free space as tables."
+
+[dust]
+uri = "github.com/bootandy/dust"
+descr = "A more intuitive du, showing which directories take the space."
+
+[fastfetch]
+uri = "github.com/fastfetch-cli/fastfetch"
+descr = "Fast, feature-rich system information tool in the neofetch style."
+
+[fd]
+uri = "github.com/sharkdp/fd"
+descr = "A simple, fast, and user-friendly alternative to find."
+
+[fzf]
+uri = "github.com/junegunn/fzf"
+descr = "Command-line fuzzy finder."
+
+[gdu]  # ? *
+uri = "github.com/dundee/gdu"
+descr = "Fast disk usage analyzer with a console interface."
+
+[git-lfs]
+uri = "github.com/git-lfs/git-lfs"
+descr = "Git extension for versioning large files."
+
+[glow]  # ? *
+uri = "github.com/charmbracelet/glow"
+descr = "Render markdown on the terminal with styling."
+
+[golangci-lint]
+uri = "github.com/golangci/golangci-lint"
+descr = "Fast parallel runner for dozens of Go linters."
+
+[goreleaser]
+uri = "github.com/goreleaser/goreleaser"
+descr = "Builds, packages, and publishes releases for Go projects."
+
+[grpcurl]  # https://github.com/fullstorydev/grpcurl/issues/541 *
+uri = "github.com/fullstorydev/grpcurl"
+descr = "Like curl, but for interacting with gRPC servers."
+
+[gum]  # ? *
+uri = "github.com/charmbracelet/gum"
+descr = "Interactive prompts and styling primitives for shell scripts."
+
+[helix]  # https://github.com/helix-editor/helix/issues/10872 *
+uri = "github.com/helix-editor/helix"
+descr = "A post-modern modal text editor."
+
+[hexyl]  # https://github.com/sharkdp/hexyl/pull/291 * ****
+uri = "github.com/sharkdp/hexyl"
+descr = "Command-line hex viewer with colored output."
+
+[hurl]  # ? *
+uri = "github.com/Orange-OpenSource/hurl"
+descr = "Run and test HTTP requests defined in plain text."
+
+[hyperfine]  # https://github.com/sharkdp/hyperfine/pull/922 * ****
+uri = "github.com/sharkdp/hyperfine"
+descr = "Command-line benchmarking tool with statistical analysis."
+
+[jq]
+uri = "github.com/jqlang/jq"
+descr = "Command-line JSON processor."
+
+[just]
+uri = "github.com/casey/just"
+descr = "Command runner using a Make-like justfile."
+
+[k9s]
+uri = "github.com/derailed/k9s"
+descr = "Terminal UI for managing and observing Kubernetes clusters."
+
+[lazydocker]
+uri = "github.com/jesseduffield/lazydocker"
+descr = "Terminal UI for docker and docker-compose."
+
+[lazygit]
+uri = "github.com/jesseduffield/lazygit"
+descr = "Terminal UI for git commands."
+
+["llama.cpp"]
+uri = "github.com/ggml-org/llama.cpp"
+descr = "LLM inference in C/C++."
+
+[lsd]  # https://github.com/lsd-rs/lsd/pull/1236 *
+uri = "github.com/lsd-rs/lsd"
+descr = "An ls with colors, icons, and a tree view."
+
+[mdbook]  # https://github.com/rust-lang/mdBook/pull/3193 * ***
+uri = "github.com/rust-lang/mdBook"
+descr = "Build a browsable book from a set of markdown files."
+
+[mise]
+uri = "github.com/jdx/mise"
+descr = "Dev tool version manager, env var loader, and task runner."
+
+[nerd-fonts]
+uri = "github.com/ryanoasis/nerd-fonts"
+descr = "Popular fonts patched with icon glyph collections."
+
+[nu]
+uri = "github.com/nushell/nushell"
+descr = "A shell whose pipelines carry structured data instead of text."
+
+[nvim]
+uri = "github.com/neovim/neovim"
+descr = "Vim fork focused on extensibility and usability."
+
+[opencode]  # https://github.com/anomalyco/opencode/issues/45875 *
+uri = "github.com/anomalyco/opencode"
+descr = "Open source coding agent for the terminal."
+
+[ouch]
+uri = "github.com/ouch-org/ouch"
+descr = "Compress and decompress archives without remembering flags."
+
+[pastel]  # https://github.com/sharkdp/pastel/pull/320 * ****
+uri = "github.com/sharkdp/pastel"
+descr = "Generate, analyze, convert, and manipulate colors."
+
+[pnpm]
+uri = "github.com/pnpm/pnpm"
+descr = "Fast, disk space efficient Node package manager."
+
+[procs]  # https://github.com/dalance/procs/pull/961 *
+uri = "github.com/dalance/procs"
+descr = "A modern replacement for ps."
+
+[psnwdl]
+uri = "github.com/meop/PSNWDL"
+descr = "PlayStation Network downloader for updates and firmware."
+
+[pwsh]
+uri = "github.com/PowerShell/PowerShell"
+descr = "PowerShell, cross-platform."
+
+[qsv]  # https://github.com/dathere/qsv/issues/2945 * ****
+uri = "github.com/dathere/qsv"
+descr = "Fast CSV data-wrangling toolkit."
+
+[rclone]
+uri = "github.com/rclone/rclone"
+descr = "Rsync for cloud storage, across dozens of providers."
+
+[restic]  # https://github.com/restic/restic/issues/3596 *
+uri = "github.com/restic/restic"
+descr = "Fast, secure, deduplicating backup program."
+
+[rg]
+uri = "github.com/BurntSushi/ripgrep"
+descr = "Recursively search directories with regex, respecting gitignore."
+
+[ruff]
+uri = "github.com/astral-sh/ruff"
+descr = "An extremely fast Python linter and code formatter."
+
+[rv]
+uri = "github.com/spinel-coop/rv"
+descr = "Extremely fast Ruby version and gem manager."
+
+[scc]
+uri = "github.com/boyter/scc"
+descr = "Very fast code counter with complexity and COCOMO estimates."
+
+[sd]  # https://github.com/chmln/sd/issues/329 * ***
+uri = "github.com/chmln/sd"
+descr = "Intuitive find and replace on the command line, a sed alternative."
+
+[shfmt]  # https://github.com/mvdan/sh/issues/1077 *
+uri = "github.com/mvdan/sh"
+descr = "Shell parser, formatter, and interpreter supporting bash and zsh."
+
+[sops]
+uri = "github.com/getsops/sops"
+descr = "Encrypt values inside YAML, JSON, and other config files."
+
+[starship]
+uri = "github.com/starship/starship"
+descr = "Minimal, fast, customizable prompt for any shell."
+
+[stern]
+uri = "github.com/stern/stern"
+descr = "Tail logs across multiple Kubernetes pods and containers."
+
+[taplo]
+uri = "github.com/tamasfe/taplo"
+descr = "TOML formatter, linter, and language server."
+
+[task]
+uri = "github.com/go-task/task"
+descr = "Cross-platform build tool inspired by Make."
+
+[tealdeer]
+uri = "github.com/dbrgn/tealdeer"
+descr = "A very fast implementation of tldr community man pages."
+
+[tree-sitter]
+uri = "github.com/tree-sitter/tree-sitter"
+descr = "Incremental parsing system for programming tools."
+
+[typos]  # https://github.com/crate-ci/typos/pull/1602 *
+uri = "github.com/crate-ci/typos"
+descr = "Source code spell checker."
+
+[uv]
+uri = "github.com/astral-sh/uv"
+descr = "An extremely fast Python package and project manager."
+
+[vhs]  # ? *
+uri = "github.com/charmbracelet/vhs"
+descr = "Script terminal recordings and render them to GIF or video."
+
+[vivid]  # https://github.com/sharkdp/vivid/pull/228 * ****
+uri = "github.com/sharkdp/vivid"
+descr = "Themeable LS_COLORS generator with a rich filetype database."
+
+[watchexec]
+uri = "github.com/watchexec/watchexec"
+descr = "Run commands in response to file modifications."
+
+[xan]  # ? * ****
+uri = "github.com/medialab/xan"
+descr = "CSV toolkit for the command line."
+
+[yazi]
+uri = "github.com/sxyazi/yazi"
+descr = "Blazing fast terminal file manager built on async I/O."
+
+[yq]
+uri = "github.com/mikefarah/yq"
+descr = "Portable command-line YAML, JSON, XML, CSV, and TOML processor."
+
+[zellij]  # https://github.com/zellij-org/zellij/pull/5090 *
+uri = "github.com/zellij-org/zellij"
+descr = "Terminal workspace and multiplexer with batteries included."
+
+[zoxide]
+uri = "github.com/ajeetdsouza/zoxide"
+descr = "A smarter cd that learns the directories you use."
 
 # ? fork investigation not yet complete
 # * missing Windows ARM64 release
