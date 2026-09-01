@@ -11,7 +11,9 @@ This repository is the package registry consumed by [ghpm](https://github.com/me
 - `descr` is a single sentence, ending in a period, under ~75 characters. Say what the tool is, not why it is good — no marketing adjectives, no emoji, no leading "A tool that".
 - Use the shortest unambiguous package name as the section key. Quote a key containing a dot, e.g. `["llama.cpp"]`.
 - Preserve alphabetical ordering when adding or renaming entries.
-- The trailing markers on a section header (`# ? *`) track upstream release-asset gaps; the legend is at the bottom of the file. Keep a marker attached to its section header line.
+- `release-tracking.md` is the source of truth for release coverage, linkage,
+  Windows ABI/toolchain, investigation branches, and upstream submissions.
+  Keep `repo.toml` limited to registry data.
 - Avoid unrelated registry cleanup in a focused package change.
 
 ## What belongs here
