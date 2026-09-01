@@ -48,7 +48,7 @@ the narrower GNU-family ABI gap. They are based on current release assets.
 | --- | --- | --- | --- |
 | bottom, dust, fd, ouch, qsv, ripgrep | Yes | MSVC asset exists | Functional ARM64 coverage exists; `gnullvm` is the remaining ABI-parity addition. |
 | fastfetch | MinGW-Clang | MinGW-Clang | Complete within its chosen MinGW-Clang family. |
-| lsd, pastel, vivid | Yes | No ARM64 asset | Architecture coverage is the first gap; decide whether a future addition should ship MSVC, `gnullvm`, or both. |
+| lsd, pastel, vivid | Yes | No ARM64 asset | Architecture coverage is the first gap. Because x64 ships both families, an ARM64 addition must ship both MSVC and `gnullvm`. |
 | sd | Yes | No released ARM64 asset | PR #354 adds native ARM64 MSVC and `gnullvm` release lanes; both are proven in fork CI. |
 
 ### Windows ARM64 campaign changes
@@ -69,9 +69,9 @@ does. It must not be read as a list of all Windows releases.
 
 ### ABI baseline audit
 
-Before adding an ARM64 asset, compare it with the released x64 asset for the
-same operating system. Do not substitute MSVC, GNU, or musl merely because it
-is easier to build.
+Before adding an ARM64 asset, compare it with every released x64 ABI family for
+the same operating system. Add a corresponding ARM64 variant for each family;
+do not substitute MSVC, GNU, or musl merely because it is easier to build.
 
 | Change set | Existing x64 baseline | Proposed ARM64 variant | Audit result |
 | --- | --- | --- | --- |
