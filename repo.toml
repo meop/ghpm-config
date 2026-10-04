@@ -10,10 +10,6 @@ descr = "Simple, modern file encryption tool with small explicit keys."
 uri = "github.com/ast-grep/ast-grep"
 descr = "Structural code search, lint, and rewrite by syntax tree pattern."
 
-[atuin]
-uri = "github.com/atuinsh/atuin"
-descr = "Shell history replacement with sync, search, and stats."
-
 [bat]
 uri = "github.com/sharkdp/bat"
 descr = "A cat clone with syntax highlighting and git integration."
@@ -57,10 +53,6 @@ descr = "Send files between computers over an end-to-end encrypted relay."
 [curlie]
 uri = "github.com/rs/curlie"
 descr = "Curl frontend with HTTPie-style request syntax and formatted output."
-
-[delta]
-uri = "github.com/dandavison/delta"
-descr = "Syntax-highlighting pager for git, diff, and grep output."
 
 [deno]
 uri = "github.com/denoland/deno"
@@ -106,17 +98,9 @@ descr = "A simple, fast, and user-friendly alternative to find."
 uri = "github.com/junegunn/fzf"
 descr = "Command-line fuzzy finder."
 
-[gdu]
-uri = "github.com/dundee/gdu"
-descr = "Fast disk usage analyzer with a console interface."
-
 [git-lfs]
 uri = "github.com/git-lfs/git-lfs"
 descr = "Git extension for versioning large files."
-
-[glow]
-uri = "github.com/charmbracelet/glow"
-descr = "Render markdown on the terminal with styling."
 
 [golangci-lint]
 uri = "github.com/golangci/golangci-lint"
@@ -129,22 +113,6 @@ descr = "Builds, packages, and publishes releases for Go projects."
 [grpcurl]
 uri = "github.com/fullstorydev/grpcurl"
 descr = "Like curl, but for interacting with gRPC servers."
-
-[gum]
-uri = "github.com/charmbracelet/gum"
-descr = "Interactive prompts and styling primitives for shell scripts."
-
-[helix]
-uri = "github.com/helix-editor/helix"
-descr = "A post-modern modal text editor."
-
-[hexyl]
-uri = "github.com/sharkdp/hexyl"
-descr = "Command-line hex viewer with colored output."
-
-[hyperfine]
-uri = "github.com/sharkdp/hyperfine"
-descr = "Command-line benchmarking tool with statistical analysis."
 
 [jq]
 uri = "github.com/jqlang/jq"
@@ -170,14 +138,6 @@ descr = "Terminal UI for git commands."
 uri = "github.com/ggml-org/llama.cpp"
 descr = "LLM inference in C/C++."
 
-[lsd]
-uri = "github.com/lsd-rs/lsd"
-descr = "An ls with colors, icons, and a tree view."
-
-[mdbook]
-uri = "github.com/rust-lang/mdBook"
-descr = "Build a browsable book from a set of markdown files."
-
 [mise]
 uri = "github.com/jdx/mise"
 descr = "Dev tool version manager, env var loader, and task runner."
@@ -202,17 +162,9 @@ descr = "Open source coding agent for the terminal."
 uri = "github.com/ouch-org/ouch"
 descr = "Compress and decompress archives without remembering flags."
 
-[pastel]
-uri = "github.com/sharkdp/pastel"
-descr = "Generate, analyze, convert, and manipulate colors."
-
 [pnpm]
 uri = "github.com/pnpm/pnpm"
 descr = "Fast, disk space efficient Node package manager."
-
-[procs]
-uri = "github.com/dalance/procs"
-descr = "A modern replacement for ps."
 
 [psnwdl]
 uri = "github.com/meop/PSNWDL"
@@ -230,10 +182,6 @@ descr = "Fast CSV data-wrangling toolkit."
 uri = "github.com/rclone/rclone"
 descr = "Rsync for cloud storage, across dozens of providers."
 
-[restic]
-uri = "github.com/restic/restic"
-descr = "Fast, secure, deduplicating backup program."
-
 [rg]
 uri = "github.com/BurntSushi/ripgrep"
 descr = "Recursively search directories with regex, respecting gitignore."
@@ -249,14 +197,6 @@ descr = "Extremely fast Ruby version and gem manager."
 [scc]
 uri = "github.com/boyter/scc"
 descr = "Very fast code counter with complexity and COCOMO estimates."
-
-[sd]
-uri = "github.com/chmln/sd"
-descr = "Intuitive find and replace on the command line, a sed alternative."
-
-[shfmt]
-uri = "github.com/mvdan/sh"
-descr = "Shell parser, formatter, and interpreter supporting bash and zsh."
 
 [sops]
 uri = "github.com/getsops/sops"
@@ -286,21 +226,9 @@ descr = "A very fast implementation of tldr community man pages."
 uri = "github.com/tree-sitter/tree-sitter"
 descr = "Incremental parsing system for programming tools."
 
-[typos]
-uri = "github.com/crate-ci/typos"
-descr = "Source code spell checker."
-
 [uv]
 uri = "github.com/astral-sh/uv"
 descr = "An extremely fast Python package and project manager."
-
-[vhs]
-uri = "github.com/charmbracelet/vhs"
-descr = "Script terminal recordings and render them to GIF or video."
-
-[vivid]
-uri = "github.com/sharkdp/vivid"
-descr = "Themeable LS_COLORS generator with a rich filetype database."
 
 [watchexec]
 uri = "github.com/watchexec/watchexec"

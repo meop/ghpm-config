@@ -1,152 +1,200 @@
-# Release target inventory
+# Release tracking
 
-`repo.toml` is intentionally only the ghpm package registry. This document is
-the source of truth for release-target coverage, ABI/linkage details, local
-fork work, and upstream discussions.
+Ongoing work to close release gaps, as of 2026-10-04. The rules, including
+the Starship and zellij registry exceptions, are in
+[release-policy.md](release-policy.md); each project's current release
+variants are in [release-matrix.md](release-matrix.md).
 
-## Target terminology
+## Open upstream submissions
 
-| Term | Meaning |
-| --- | --- |
-| Windows MSVC | A Rust `*-pc-windows-msvc` target, or native MSVC toolchain. |
-| Windows GNU family | A Rust `*-pc-windows-gnu` target using the MinGW-w64 ABI, or ARM64's `aarch64-pc-windows-gnullvm` LLVM/MinGW counterpart. |
-| Windows MinGW-Clang | Clang built in MSYS2 for the MinGW-w64 ABI; not MSVC. |
-| Windows Go | A Go `GOOS=windows` binary; neither MSVC nor MinGW. |
-| Linux musl static | No dynamic musl loader is required at runtime. |
-
-Do not infer an ABI from an `.exe` filename. Record a release target, build
-workflow, or inspected binary. A project can intentionally publish both GNU
-and MSVC x64 assets while publishing only MSVC for Windows ARM64.
-
-## Windows ABI inventory
-
-These are current upstream release facts, not target requests. `Yes` in the
-ARM64 column means a released Windows ARM64 asset exists today.
-
-| Project | Windows x64 assets | Windows ARM64 asset | Notes |
-| --- | --- | --- | --- |
-| bottom | GNU and MSVC | MSVC | Both x64 ABIs coexist. |
-| dust | GNU and MSVC | MSVC | Both x64 ABIs coexist. |
-| fd | GNU and MSVC | MSVC | Both x64 ABIs coexist. |
-| fastfetch | MinGW-Clang | MinGW-Clang | MSYS2 `CLANG64` and `CLANGARM64`; DLLs are bundled. |
-| lsd | GNU and MSVC | No | Windows ARM64 remains a gap. |
-| Neovim | MSVC | MSVC | Native Visual Studio toolchain for both architectures. |
-| ouch | GNU and MSVC | MSVC | Both x64 ABIs coexist. |
-| pastel | GNU and MSVC | No | Windows ARM64 remains a gap. |
-| qsv | GNU and MSVC | MSVC | The GNU asset is x64-only. |
-| ripgrep | GNU and MSVC | MSVC | Both x64 ABIs coexist. |
-| sd | GNU and MSVC | Not yet released | PR #354 runs ARM64 MSVC and GNU-family jobs natively; neither ARM64 artifact has been released yet. |
-| vivid | GNU and MSVC | No | Windows ARM64 remains a gap. |
-
-### Windows GNU-family parity audit
-
-Rust does not provide `aarch64-pc-windows-gnu`; its ARM64 GNU-family target is
-`aarch64-pc-windows-gnullvm`. These rows distinguish an architecture gap from
-the narrower GNU-family ABI gap. They are based on current release assets.
-
-| Project | Existing Windows x64 GNU asset | ARM64 status | GNU-family parity disposition |
-| --- | --- | --- | --- |
-| bottom, dust, fd, ouch, qsv, ripgrep | Yes | MSVC asset exists | Functional ARM64 coverage exists; `gnullvm` is the remaining ABI-parity addition. |
-| fastfetch | MinGW-Clang | MinGW-Clang | Complete within its chosen MinGW-Clang family. |
-| lsd, pastel, vivid | Yes | No ARM64 asset | Architecture coverage is the first gap. Because x64 ships both families, an ARM64 addition must ship both MSVC and `gnullvm`. |
-| sd | Yes | No released ARM64 asset | PR #354 adds native ARM64 MSVC and `gnullvm` release lanes; both are proven in fork CI. |
-
-### Windows ARM64 campaign changes
-
-This table answers a different question: what each branch or submitted change
-does. It must not be read as a list of all Windows releases.
-
-| Project | x64 ABI before change | ARM64 ABI under test/change | What changed | State |
+| Project | Change | Upstream | State | Proof |
 | --- | --- | --- | --- | --- |
-| Atuin | MSVC | MSVC | Native build and cargo-dist package proof. | Proof passed; issue #3056 is closed after a maintainer recalled an earlier unspecified failure. |
-| Delta | MSVC | MSVC | Native release packaging and smoke coverage. | Issues [#2223](https://github.com/dandavison/delta/issues/2223) and [#2227](https://github.com/dandavison/delta/issues/2227); issue-first. |
-| GDU | Go | Go | Add Windows ARM64 to the Go release matrix. | [PR #647](https://github.com/dundee/gdu/pull/647) open. |
-| Glow, Gum, VHS | Go | Go | Shared Charm release configuration would need an ARM64 row. | Idea discussions open; no active worktree required. |
-| Procs | MSVC | MSVC | Add native ARM regression build and ARM64 ZIP. | [PR #961](https://github.com/dalance/procs/pull/961) open. |
-| SD | GNU and MSVC | MSVC and GNU family (`gnullvm`) | Run both ARM64 Windows release lanes on `windows-11-arm`, package ZIPs by target triple, and provision the GNU-family linker. | [PR #354](https://github.com/chmln/sd/pull/354) open; both fork smokes passed. |
-| Typos | MSVC | MSVC | Add native ARM CI and a Windows ARM64 release ZIP. | [PR #1602](https://github.com/crate-ci/typos/pull/1602) open. |
-| Restic | Go | Go | Native build passed; VSS must be compared with x64. | Upstream [#3596](https://github.com/restic/restic/issues/3596); TODO committed to fork branch. |
+| Delta | Windows ARM64 (MSVC) | [#2223](https://github.com/dandavison/delta/issues/2223), [PR #2267](https://github.com/dandavison/delta/pull/2267) | PR opened 2026-10-04 after a month without a reply on the issue. | Native build packaged by `before_deploy.sh` on current `main` ([run](https://github.com/meop/delta/actions/runs/37178086572)). |
+| Delta | Linux ARM64 musl | [#2227](https://github.com/dandavison/delta/issues/2227), [PR #2268](https://github.com/dandavison/delta/pull/2268) | PR opened 2026-10-04. Third-party [PR #2236](https://github.com/dandavison/delta/pull/2236) (2026-09-13) makes the same change, but without `musl-tools` and with an unrelated README badge. | Static, stripped binary and `.deb` from the same [run](https://github.com/meop/delta/actions/runs/37178086572). |
+| hexyl | Windows ARM64 (MSVC) | [PR #291](https://github.com/sharkdp/hexyl/pull/291) | Open since 2026-08-16; green CI, no review. | Fork release matrix. |
+| hexyl | Linux ARM64 musl | [PR #292](https://github.com/sharkdp/hexyl/pull/292) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
+| lsd | Windows ARM64 `gnullvm` | [PR #1244](https://github.com/lsd-rs/lsd/pull/1244) | Opened 2026-10-04. The existing `i686-pc-windows-gnu` job fails to install its toolchain on `windows-latest`, independent of this change; noted in the description. | `+crt-static` was the only option of three that started without MSYS2 ([experiment](https://github.com/meop/lsd/actions/runs/37169967049)); full [release matrix](https://github.com/meop/lsd/actions/runs/37170362416). |
+| lsd | Enforce the committed lockfile in CI | [PR #1237](https://github.com/lsd-rs/lsd/pull/1237) | Open since 2026-08-16. | — |
+| pastel | Windows ARM64 (MSVC and `gnullvm`) | [PR #320](https://github.com/sharkdp/pastel/pull/320) | Open since 2026-08-16, no review; `gnullvm` added 2026-10-04. | Full [release matrix](https://github.com/meop/pastel/actions/runs/37170366243), including a run without MSYS2. |
+| pastel | Linux ARM64 musl | [PR #322](https://github.com/sharkdp/pastel/pull/322) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
+| qsv | Linux ARM64 musl | [PR #4721](https://github.com/dathere/qsv/pull/4721) | Opened 2026-10-04; ships `qsv` and `qsvlite`, skipping `qsvdp`/`qsvmcp` as upstream already does for ARM64 GNU. | Without swap the runner was [killed](https://github.com/meop/qsv/actions/runs/33244539065) in the `qsvdp` link; with swap all three [built static and ran](https://github.com/meop/qsv/actions/runs/37171347787). |
+| SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
+| Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28; awaiting re-review. | Fork release matrix. |
+| Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
+| xan | Windows ARM64 (MSVC) and Linux ARM64 musl | [#1185](https://github.com/medialab/xan/issues/1185) | Issue opened 2026-10-04, as xan asks before a contribution. Branch `ci/arm64-release-targets` is ready for a PR if they agree. | Release action in dry-run mode; ARM64 musl binary static and runs on ARM64, `xan.exe` runs on Windows ARM64 ([run](https://github.com/meop/xan/actions/runs/37176732631)). |
+| zellij | Windows ARM64 | [PR #5090](https://github.com/zellij-org/zellij/pull/5090) | Third-party PR open since 2026-04 with no review. | — |
+| zoxide | WiX/MSI installer for winget | [#1180](https://github.com/ajeetdsouza/zoxide/issues/1180) | Maintainer asked for an MSI PR on 2026-05-10. Not yet submitted; see [packaging work](#packaging-work). | — |
+| Gum, VHS | Windows ARM64 | Gum [#1139](https://github.com/charmbracelet/gum/discussions/1139), VHS [#780](https://github.com/charmbracelet/vhs/discussions/780) | Idea discussions, no response. Needs the [meta#305](https://github.com/charmbracelet/meta/pull/305) change in `goreleaser-full.yaml` (Gum) and `goreleaser-vhs.yaml` (VHS). | Fork smokes on `windows-arm64-release`. |
 
-### ABI baseline audit
+## Merged, awaiting a release
 
-Before adding an ARM64 asset, compare it with every released x64 ABI family for
-the same operating system. Add a corresponding ARM64 variant for each family;
-do not substitute MSVC, GNU, or musl merely because it is easier to build.
-
-| Change set | Existing x64 baseline | Proposed ARM64 variant | Audit result |
+| Project | Change | Merged | Latest release |
 | --- | --- | --- | --- |
-| GDU [PR #647](https://github.com/dundee/gdu/pull/647) | Go | Go | Same toolchain family. |
-| SD [PR #354](https://github.com/chmln/sd/pull/354) | GNU and MSVC | MSVC and GNU family (`gnullvm`) | Valid: preserves both released x64 ABI families; native fork smokes built and packaged each ARM64 variant. |
-| Procs [PR #961](https://github.com/dalance/procs/pull/961) | MSVC | MSVC | Same ABI family. |
-| Typos [PR #1602](https://github.com/crate-ci/typos/pull/1602) | MSVC | MSVC | Same ABI family. |
-| Delta branch | MSVC | MSVC | Same ABI family; issue-first upstream. |
-| Atuin branch | MSVC | MSVC | Same ABI family; no upstream PR. |
-| Hexyl, Hyperfine, Pastel, Vivid Linux PRs | Linux x64 musl | Linux ARM64 musl | Same libc family; each x64 musl asset exists today. |
-| mdBook [PR #3207](https://github.com/rust-lang/mdBook/pull/3207) | Linux x64 GNU | Linux ARM64 GNU | Same libc family. |
+| GDU | Windows ARM64 ([PR #647](https://github.com/dundee/gdu/pull/647)) | 2026-10-02 | v5.37.0 (2026-08-18) |
+| Glow | Windows ARM64 ([meta#305](https://github.com/charmbracelet/meta/pull/305), by a maintainer) | 2026-09-30 | v3.0.0 (2026-08-11) |
+| helix | Windows ARM64 ([PR #15557](https://github.com/helix-editor/helix/pull/15557), not ours) | 2026-05-25 | 25.07.1 (2025-07-18) |
+| hyperfine | Windows ARM64 ([PR #922](https://github.com/sharkdp/hyperfine/pull/922)), Linux ARM64 musl ([PR #924](https://github.com/sharkdp/hyperfine/pull/924)) | 2026-10-02 | v1.20.0 (2025-11-18) |
+| lsd | Windows ARM64 MSVC ([PR #1236](https://github.com/lsd-rs/lsd/pull/1236)) | 2026-08-16 | v1.2.0 (2025-10-12) |
+| mdBook | Windows ARM64 ([PR #3193](https://github.com/rust-lang/mdBook/pull/3193)), Linux ARM64 GNU ([PR #3207](https://github.com/rust-lang/mdBook/pull/3207)) | 2026-08-17, 2026-09-02 | v0.5.4 (2026-07-06) |
+| Procs | Windows ARM64 ([PR #961](https://github.com/dalance/procs/pull/961)) | 2026-09-07 | v0.14.12 (2026-06-25) |
+| SD | Linux ARM64 GNU (already in the release workflow) | — | v1.1.0 (2026-02-25) |
+| Vivid | Windows ARM64 MSVC ([PR #228](https://github.com/sharkdp/vivid/pull/228)), Linux ARM64 musl ([PR #233](https://github.com/sharkdp/vivid/pull/233)) | 2026-08-17, 2026-08-31 | v0.11.1 (2026-04-09) |
 
-There is no submitted change that adds Windows ARM64 MSVC to a project with
-only a Windows x64 GNU release. Several projects publish both x64 ABIs; this
-must be checked per project, not inferred from one asset filename.
+When a release ships, check [release-matrix.md](release-matrix.md), and move
+the project's pending entry into `repo.toml` if its platform gap is closed.
 
-## Known release coverage gaps
+## Proven in a fork, not submitted
 
-| Project | Missing or exceptional variant | Upstream tracking | Current disposition |
-| --- | --- | --- | --- |
-| age | Windows ARM64 | [#733](https://github.com/FiloSottile/age/issues/733) | Not under active fork work. |
-| Atuin | Windows ARM64; portable Windows shell startup | [#3056](https://github.com/atuinsh/atuin/issues/3056) | See campaign table; WiX branch is separate. |
-| Delta | Windows ARM64; Linux ARM64 musl | [#2223](https://github.com/dandavison/delta/issues/2223), [#2227](https://github.com/dandavison/delta/issues/2227) | Issue-first. |
-| GDU | Windows ARM64 | [PR #647](https://github.com/dundee/gdu/pull/647) | Open PR. |
-| Glow, Gum, VHS | Windows ARM64 | Glow [discussion #1025](https://github.com/charmbracelet/glow/discussions/1025), Gum [#1139](https://github.com/charmbracelet/gum/discussions/1139), VHS [#780](https://github.com/charmbracelet/vhs/discussions/780) | Charm asks for an idea discussion before a PR. |
-| grpcurl | Windows ARM64 | [#541](https://github.com/fullstorydev/grpcurl/issues/541) | Not under active fork work. |
-| helix | Windows ARM64 | [#10872](https://github.com/helix-editor/helix/issues/10872) | Not under active fork work. |
-| hexyl | Linux ARM64 musl | [PR #292](https://github.com/sharkdp/hexyl/pull/292) | Open PR; static artifact proven. |
-| hyperfine | Linux ARM64 musl | [PR #924](https://github.com/sharkdp/hyperfine/pull/924) | Open PR; static artifact proven. |
-| lsd | Windows ARM64 | [PR #1236](https://github.com/lsd-rs/lsd/pull/1236) | Upstream tracking exists. |
-| mdBook | Windows ARM64; Linux ARM64 GNU | [PR #3207](https://github.com/rust-lang/mdBook/pull/3207) | Open PR covers Linux ARM64 GNU; Windows ARM64 remains separate. |
-| pastel | Windows ARM64; Linux ARM64 musl | [PR #322](https://github.com/sharkdp/pastel/pull/322) | Open PR covers Linux musl; Windows ARM64 remains separate. |
-| Procs | Windows ARM64 | [PR #961](https://github.com/dalance/procs/pull/961) | Open PR. |
-| QSV | Windows ARM64; Linux ARM64 musl | [#2945](https://github.com/dathere/qsv/issues/2945) | ARM64-musl build reaches `qsvdp`, then the hosted runner terminates it; no code failure established. |
-| Restic | Windows ARM64 | [#3596](https://github.com/restic/restic/issues/3596) | Requires native VSS/fs-snapshot comparison. |
-| SD | Windows ARM64; Linux ARM64 GNU | [PR #354](https://github.com/chmln/sd/pull/354) | Open PR covers native Windows ARM64 MSVC and GNU-family lanes; Linux ARM64 GNU is already in the release workflow but awaits a new release. |
-| shfmt | Windows ARM64 | [#1077](https://github.com/mvdan/sh/issues/1077) | Not under active fork work. |
-| Typos | Windows ARM64 | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Open PR. |
-| Vivid | Windows ARM64; Linux ARM64 musl | [PR #233](https://github.com/sharkdp/vivid/pull/233) | Linux-musl PR merged; Windows ARM64 remains separate. |
-| zellij | Windows ARM64 | [PR #5090](https://github.com/zellij-org/zellij/pull/5090) | Upstream tracking exists. |
+| Project | Branch | Change | Proof | Next step |
+| --- | --- | --- | --- | --- |
+| Atuin | `dist/windows-arm64-native` | Add `aarch64-pc-windows-msvc` to cargo-dist and pin it to a `windows-11-arm` custom runner, as every other Atuin target is already pinned to a native runner. `dist generate` leaves `release.yml` unchanged. | Default cross-compile [fails](https://github.com/meop/atuin/actions/runs/33228562158): cargo-xwin passes clang-cl `/imsvc` flags to `ring`'s `clang` build. On current `main`, the native build, `atuin --version`, the dist plan, and the dist-planned package all [pass](https://github.com/meop/atuin/actions/runs/37175505700). | Open the PR. Atuin asks contributors to write the description themselves; #3056 was closed as not planned when the maintainer could not recall the failure. |
+| Starship | `linux-arm64-gnu-smoke` | Native Linux ARM64 GNU release lane. | [Passed](https://github.com/meop/starship/actions/runs/33569201148) 2026-09-01. | Low value: ARM64 already ships a static musl build. |
 
-## Linux musl linkage exceptions
+## Handoffs and blocked work
 
-These projects publish a musl-labelled release that is dynamically linked, so
-the asset needs a compatible musl runtime/loader and is not a portable static
-musl binary.
-
-| Project | Tracking or reason |
-| --- | --- |
-| Bun | [#23910](https://github.com/oven-sh/bun/issues/23910) requests a static binary. |
-| Claude Code | Bundled through Bun; same runtime model. |
-| Fastfetch | [#2102](https://github.com/fastfetch-cli/fastfetch/issues/2102) was declined because the plugin architecture uses dynamic loading. |
-| OpenCode | Current musl asset is dynamic. |
-| pnpm | Current musl asset is dynamic. |
-| PowerShell | Dynamic musl package is deliberate for its runtime/dependency model. |
-
-## Windows portable-installer work
-
-Portable Winget ZIP installs can expose shell hooks through symlinks. Windows
-SSH installations may not follow those links, so shell startup breaks. The
-desired user experience is a signed MSI/WiX-style installer rather than a
-portable symlink layout.
-
-| Project | Fork branch | Status |
+| Project | Blocker | State |
 | --- | --- | --- |
-| Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration; separate from Windows ARM64 work. |
-| fzf | `winget-wix-installer` | WIP investigation/configuration. |
-| Yazi | `winget-wix-installer` | WIP investigation/configuration. |
-| Zoxide | `winget-wix-installer` | WIP investigation/configuration. |
+| Restic | VSS on Windows ARM64 ([#3596](https://github.com/restic/restic/issues/3596)) | Handed to the Windows ARM64 host: branch `windows-arm64-release` with `WINDOWS-ARM64-TODO.md`, fork PR `meop/restic#1`. The native build works except `--use-fs-snapshot`: `vss_windows.go` rejects arm64, and relaxing that crashes in `IsVolumeSupported`, likely because ARM64 passes the 16-byte `VSS_ID` by value in two registers (needs a split like the 386 case). A 2026-10-03 reporter on #3596 offered to test a patch on hardware. Releases are built locally, and `helpers/build-release-binaries` lists only `386` and `amd64` for Windows, so `arm64` must be added there too. |
+| cabal, hadolint, ShellCheck | GHC cannot build native Windows ARM64 | Cross-compiling works: [ghc#24603](https://gitlab.haskell.org/ghc/ghc/-/work_items/24603) (opened 2024-03) closed with MR !13856, merged 2025-05, and cabal's side merged in [cabal#10705](https://github.com/haskell/cabal/pull/10705). A native compiler ([ghc#25974](https://gitlab.haskell.org/ghc/ghc/-/work_items/25974)) is claimed by gulin.serge but idle since 2025-05; it plans to test under Wine because GHC's CI has no Windows ARM64. Work resumed in 2026-01 (RTS linker [ghc#26760](https://gitlab.haskell.org/ghc/ghc/-/work_items/26760), split sections [ghc#26763](https://gitlab.haskell.org/ghc/ghc/-/work_items/26763), draft MR !15346 for tables-next-to-code) and stalled after mid-January; [ghc#27684](https://gitlab.haskell.org/ghc/ghc/-/work_items/27684) (C calling convention) opened 2026-08. Options: help finish the native compiler with real Windows ARM64 hardware, or build these projects with the existing cross compiler and validate on the ARM64 host. No forks or handoff branches yet. hadolint has an open Winget request ([#1217](https://github.com/hadolint/hadolint/issues/1217)). |
+| OpenCode | Windows ARM64 `#pty` shell sessions ([#45875](https://github.com/anomalyco/opencode/issues/45875)) | The TUI works since the Bun 1.4.2 bump ([PR #47446](https://github.com/anomalyco/opencode/pull/47446)). `bun-pty` 0.4.11 ships an ARM64 DLL ([bun-pty#46](https://github.com/sursaone/bun-pty/pull/46)), but OpenCode still pins 0.4.8; nobody has proposed the bump. |
 
-## Fork and submission lifecycle
+### Packaging work
 
-- A canonical clone lives at `/vol/code/<upstream-org>/<repo>`, with `origin`
-  for upstream and `fork` for `meop/<repo>`.
-- Temporary worktrees are removed after their branch is committed and pushed.
-- Retain a fork while it backs an open PR, active discussion, or current branch.
-- Remove a dropped project from this document and `repo.toml`, then delete its
-  `meop` fork and canonical clone only when explicitly requested.
+Winget installs these as portable ZIPs, which put a symlink in the WinGet
+Links folder. Windows does not follow those symlinks over SSH by default, so
+shell init hooks break. The goal is a WiX/MSI installer alongside the ZIP, as
+Starship ships.
+
+| Project | Branch | State |
+| --- | --- | --- |
+| Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration. |
+| fzf | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
+| Yazi | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
+| zoxide | `winget-wix-installer` | WIP; build, install, and winget preference still need verification. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
+
+## Backlog
+
+Gaps with no work started.
+
+| Project | Gap |
+| --- | --- |
+| bottom, dust, fd, ouch, qsv, ripgrep | Windows ARM64 `gnullvm`, to match x64's GNU build. |
+| difftastic | Linux ARM64 musl, to match x64's static musl build. |
+| taplo | The `taplo-full` variant dropped in 0.10.0 (see [release-matrix.md](release-matrix.md#project-notes)). |
+
+## Pending registry entries
+
+Projects with a platform gap. Move an entry into `repo.toml`, in alphabetical
+order, once a release closes the gap.
+
+```toml
+[atuin]
+uri = "github.com/atuinsh/atuin"
+descr = "Shell history replacement with sync, search, and stats."
+
+[cabal]
+uri = "github.com/haskell/cabal"
+descr = "Command-line tool for building and packaging Haskell projects."
+
+[delta]
+uri = "github.com/dandavison/delta"
+descr = "Syntax-highlighting pager for git, diff, and grep output."
+
+[gdu]
+uri = "github.com/dundee/gdu"
+descr = "Fast disk usage analyzer with a console interface."
+
+[glow]
+uri = "github.com/charmbracelet/glow"
+descr = "Render markdown on the terminal with styling."
+
+[gum]
+uri = "github.com/charmbracelet/gum"
+descr = "Interactive prompts and styling primitives for shell scripts."
+
+[hadolint]
+uri = "github.com/hadolint/hadolint"
+descr = "Dockerfile linter that checks inline shell with ShellCheck."
+
+[helix]
+uri = "github.com/helix-editor/helix"
+descr = "A post-modern modal text editor."
+
+[hexyl]
+uri = "github.com/sharkdp/hexyl"
+descr = "Command-line hex viewer with colored output."
+
+[hyperfine]
+uri = "github.com/sharkdp/hyperfine"
+descr = "Command-line benchmarking tool with statistical analysis."
+
+[lsd]
+uri = "github.com/lsd-rs/lsd"
+descr = "An ls with colors, icons, and a tree view."
+
+[mdbook]
+uri = "github.com/rust-lang/mdBook"
+descr = "Build a browsable book from a set of markdown files."
+
+[pastel]
+uri = "github.com/sharkdp/pastel"
+descr = "Generate, analyze, convert, and manipulate colors."
+
+[procs]
+uri = "github.com/dalance/procs"
+descr = "A modern replacement for ps."
+
+[restic]
+uri = "github.com/restic/restic"
+descr = "Fast, secure, deduplicating backup program."
+
+[sd]
+uri = "github.com/chmln/sd"
+descr = "Intuitive find and replace on the command line, a sed alternative."
+
+[shellcheck]
+uri = "github.com/koalaman/shellcheck"
+descr = "Static analysis tool for shell scripts."
+
+[typos]
+uri = "github.com/crate-ci/typos"
+descr = "Source code spell checker."
+
+[vhs]
+uri = "github.com/charmbracelet/vhs"
+descr = "Script terminal recordings and render them to GIF or video."
+
+[vivid]
+uri = "github.com/sharkdp/vivid"
+descr = "Themeable LS_COLORS generator with a rich filetype database."
+
+[xan]
+uri = "github.com/medialab/xan"
+descr = "CSV toolkit for the command line."
+```
+
+## Clone and fork inventory
+
+Every canonical clone under `/vol/code` and every `meop` fork used for release
+work.
+
+| Project | Clone | Fork | Branches |
+| --- | --- | --- | --- |
+| Atuin | yes | yes | `dist/windows-arm64-native` (proven, awaiting your PR), `winget-wix-installer` |
+| Charm meta | yes | yes | none (for the Gum/VHS change) |
+| Delta | yes | yes | `ci/windows-arm64-release-pr` (PR #2267), `ci/linux-arm64-musl-release-pr` (PR #2268) |
+| fzf | yes | yes | `winget-wix-installer` |
+| Gum, VHS | yes | yes | `windows-arm64-release` (fork smoke for the meta change) |
+| hexyl | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #292); PR #291's branch on the fork only |
+| lsd | yes | yes | `ci/windows-arm64-gnullvm` (PR #1244); PR #1237's branch on the fork only |
+| OpenCode | yes | no | none |
+| pastel | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #322); PR #320's branch `ci/platform-release-matrix` on the fork |
+| QSV | yes | yes | `ci/linux-arm64-musl-release` (PR #4721) |
+| Restic | yes | yes | `windows-arm64-release` (handoff; fork PR `meop/restic#1`) |
+| SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |
+| Starship | yes | yes | `linux-arm64-gnu-smoke` |
+| Typos | no | yes | PR #1602's branch on the fork only |
+| Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
+| xan | yes | yes | `ci/arm64-release-targets` (awaiting issue #1185) |
+| Yazi | yes | yes | `winget-wix-installer` |
+| zoxide | yes | yes | `winget-wix-installer` |

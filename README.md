@@ -21,7 +21,7 @@ ghpm also accepts the older flat form (`fzf = "github.com/junegunn/fzf"`) in any
 
 ## Adding repos
 
-Open a PR editing `repo.toml`, keeping entries in alphabetical order. Registry entries are for tools that ship prebuilt release assets on GitHub for the platforms ghpm targets; a tool better installed by a system package manager belongs in that manager, not here.
+Open a PR editing `repo.toml`, keeping entries in alphabetical order. Registry entries are for tools whose GitHub releases ship prebuilt assets for Windows x64 and ARM64, Linux x64 and ARM64, and macOS ARM64 (see [release-matrix.md](release-matrix.md) and [release-tracking.md](release-tracking.md) for tools with gaps); a tool better installed by a system package manager belongs in that manager, not here.
 
 ## License
 
