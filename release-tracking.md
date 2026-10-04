@@ -19,8 +19,6 @@ variants are in [release-matrix.md](release-matrix.md).
 | ouch | Windows ARM64 `gnullvm` | Proposal issue [#1094](https://github.com/ouch-org/ouch/issues/1094) | Opened 2026-10-04; branch `windows-arm64-gnullvm` is ready for a PR if they agree. MSYS2 clang compiles the C and C++ codecs; bzip3's bindgen gets MSYS2's libclang plus `--target=aarch64-w64-mingw32`, since clang rejects the `gnullvm` suffix. | Build, 117 tests, and a run without MSYS2 [passed](https://github.com/meop/ouch/actions/runs/37183581297). |
 | pastel | Windows ARM64 (MSVC and `gnullvm`) | [PR #320](https://github.com/sharkdp/pastel/pull/320) | Open since 2026-08-16, no review; `gnullvm` added 2026-10-04. | Full [release matrix](https://github.com/meop/pastel/actions/runs/37170366243), including a run without MSYS2. |
 | pastel | Linux ARM64 musl | [PR #322](https://github.com/sharkdp/pastel/pull/322) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
-| qsv | Linux ARM64 musl | [PR #4721](https://github.com/dathere/qsv/pull/4721) | Opened 2026-10-04; ships `qsv` and `qsvlite`, skipping `qsvdp`/`qsvmcp` as upstream already does for ARM64 GNU. | Without swap the runner was [killed](https://github.com/meop/qsv/actions/runs/33244539065) in the `qsvdp` link; with swap all three [built static and ran](https://github.com/meop/qsv/actions/runs/37171347787). |
-| qsv | Windows ARM64 `gnullvm` | [PR #4722](https://github.com/dathere/qsv/pull/4722) | Opened 2026-10-04; ships `qsv` and `qsvlite`, as the MSVC row does. Luau is C++, so libc++ is linked statically as well as libunwind. | Both binaries import only system DLLs and start without MSYS2 ([run](https://github.com/meop/qsv/actions/runs/37186473553)). |
 | SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
 | Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28; awaiting re-review. | Fork release matrix. |
 | Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
@@ -40,6 +38,7 @@ variants are in [release-matrix.md](release-matrix.md).
 | lsd | Windows ARM64 MSVC ([PR #1236](https://github.com/lsd-rs/lsd/pull/1236)) | 2026-08-16 | v1.2.0 (2025-10-12) |
 | mdBook | Windows ARM64 ([PR #3193](https://github.com/rust-lang/mdBook/pull/3193)), Linux ARM64 GNU ([PR #3207](https://github.com/rust-lang/mdBook/pull/3207)) | 2026-08-17, 2026-09-02 | v0.5.4 (2026-07-06) |
 | Procs | Windows ARM64 ([PR #961](https://github.com/dalance/procs/pull/961)) | 2026-09-07 | v0.14.12 (2026-06-25) |
+| qsv | Linux ARM64 musl ([PR #4721](https://github.com/dathere/qsv/pull/4721)), Windows ARM64 `gnullvm` ([PR #4722](https://github.com/dathere/qsv/pull/4722)) | 2026-10-04 | 23.0.1 (2026-09-13) |
 | SD | Linux ARM64 GNU (already in the release workflow) | — | v1.1.0 (2026-02-25) |
 | Vivid | Windows ARM64 MSVC ([PR #228](https://github.com/sharkdp/vivid/pull/228)), Linux ARM64 musl ([PR #233](https://github.com/sharkdp/vivid/pull/233)) | 2026-08-17, 2026-08-31 | v0.11.1 (2026-04-09) |
 
@@ -198,14 +197,14 @@ work.
 | dust | yes | yes | `ci/windows-arm64-gnullvm` (PR #632) |
 | fd | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your issue) |
 | fzf | yes | yes | `winget-wix-installer` |
-| GHC | yes (from gitlab.haskell.org) | no; needs your gitlab.haskell.org account | `wip/windows-aarch64-native` (local; native Windows ARM64 GHC) |
+| GHC | yes (from gitlab.haskell.org) | no; your gitlab.haskell.org account needs verification first (steps in the branch's `windows-aarch64/TODO.md`) | `wip/windows-aarch64-native` (local; native Windows ARM64 GHC) |
 | Gum, VHS | yes | yes | `windows-arm64-release` (fork smoke for the meta change) |
 | hexyl | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #292); PR #291's branch on the fork only |
 | lsd | yes | yes | `ci/windows-arm64-gnullvm` (PR #1244); PR #1237's branch on the fork only |
 | OpenCode | yes | no | none |
 | ouch | yes | yes | `windows-arm64-gnullvm` (awaiting issue #1094) |
 | pastel | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #322); PR #320's branch `ci/platform-release-matrix` on the fork |
-| QSV | yes | yes | `ci/linux-arm64-musl-release` (PR #4721), `ci/windows-arm64-gnullvm` (PR #4722), `windows-arm64-gnullvm-smoke` (fork-only) |
+| QSV | yes | yes | `ci/linux-arm64-musl-release` and `ci/windows-arm64-gnullvm` (both merged; delete after the release), `windows-arm64-gnullvm-smoke` (fork-only) |
 | Restic | yes | yes | `windows-arm64-release` (handoff; fork PR `meop/restic#1`) |
 | ripgrep | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your PR) |
 | SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |
