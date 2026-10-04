@@ -11,13 +11,16 @@ variants are in [release-matrix.md](release-matrix.md).
 | --- | --- | --- | --- | --- |
 | Delta | Windows ARM64 (MSVC) | [#2223](https://github.com/dandavison/delta/issues/2223), [PR #2267](https://github.com/dandavison/delta/pull/2267) | PR opened 2026-10-04 after a month without a reply on the issue. | Native build packaged by `before_deploy.sh` on current `main` ([run](https://github.com/meop/delta/actions/runs/37178086572)). |
 | Delta | Linux ARM64 musl | [#2227](https://github.com/dandavison/delta/issues/2227), [PR #2268](https://github.com/dandavison/delta/pull/2268) | PR opened 2026-10-04. Third-party [PR #2236](https://github.com/dandavison/delta/pull/2236) (2026-09-13) makes the same change, but without `musl-tools` and with an unrelated README badge. | Static, stripped binary and `.deb` from the same [run](https://github.com/meop/delta/actions/runs/37178086572). |
+| dust | Windows ARM64 `gnullvm` | [PR #632](https://github.com/bootandy/dust/pull/632) | Opened 2026-10-04. | Full CI matrix plus a run without MSYS2 [passed](https://github.com/meop/dust/actions/runs/37182269948). The fork's RISC-V job requests `ubuntu-24.04-riscv`, which this account lacks, so fork runs never finish on their own. |
 | hexyl | Windows ARM64 (MSVC) | [PR #291](https://github.com/sharkdp/hexyl/pull/291) | Open since 2026-08-16; green CI, no review. | Fork release matrix. |
 | hexyl | Linux ARM64 musl | [PR #292](https://github.com/sharkdp/hexyl/pull/292) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
 | lsd | Windows ARM64 `gnullvm` | [PR #1244](https://github.com/lsd-rs/lsd/pull/1244) | Opened 2026-10-04. The existing `i686-pc-windows-gnu` job fails to install its toolchain on `windows-latest`, independent of this change; noted in the description. | `+crt-static` was the only option of three that started without MSYS2 ([experiment](https://github.com/meop/lsd/actions/runs/37169967049)); full [release matrix](https://github.com/meop/lsd/actions/runs/37170362416). |
 | lsd | Enforce the committed lockfile in CI | [PR #1237](https://github.com/lsd-rs/lsd/pull/1237) | Open since 2026-08-16. | — |
+| ouch | Windows ARM64 `gnullvm` | Proposal issue [#1094](https://github.com/ouch-org/ouch/issues/1094) | Opened 2026-10-04; branch `windows-arm64-gnullvm` is ready for a PR if they agree. MSYS2 clang compiles the C and C++ codecs; bzip3's bindgen gets MSYS2's libclang plus `--target=aarch64-w64-mingw32`, since clang rejects the `gnullvm` suffix. | Build, 117 tests, and a run without MSYS2 [passed](https://github.com/meop/ouch/actions/runs/37183581297). |
 | pastel | Windows ARM64 (MSVC and `gnullvm`) | [PR #320](https://github.com/sharkdp/pastel/pull/320) | Open since 2026-08-16, no review; `gnullvm` added 2026-10-04. | Full [release matrix](https://github.com/meop/pastel/actions/runs/37170366243), including a run without MSYS2. |
 | pastel | Linux ARM64 musl | [PR #322](https://github.com/sharkdp/pastel/pull/322) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
 | qsv | Linux ARM64 musl | [PR #4721](https://github.com/dathere/qsv/pull/4721) | Opened 2026-10-04; ships `qsv` and `qsvlite`, skipping `qsvdp`/`qsvmcp` as upstream already does for ARM64 GNU. | Without swap the runner was [killed](https://github.com/meop/qsv/actions/runs/33244539065) in the `qsvdp` link; with swap all three [built static and ran](https://github.com/meop/qsv/actions/runs/37171347787). |
+| qsv | Windows ARM64 `gnullvm` | [PR #4722](https://github.com/dathere/qsv/pull/4722) | Opened 2026-10-04; ships `qsv` and `qsvlite`, as the MSVC row does. Luau is C++, so libc++ is linked statically as well as libunwind. | Both binaries import only system DLLs and start without MSYS2 ([run](https://github.com/meop/qsv/actions/runs/37186473553)). |
 | SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
 | Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28; awaiting re-review. | Fork release matrix. |
 | Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
@@ -56,10 +59,7 @@ MinGW toolchain), though no registry project ships one yet.
 | fd | `ci/windows-arm64-gnullvm` | Windows ARM64 `gnullvm` lane on `windows-11-arm`, `+crt-static`. | Full CI matrix plus a run without MSYS2 [passed](https://github.com/meop/fd/actions/runs/37182244324). | fd asks for an issue first, written by you. |
 | ripgrep | `ci/windows-arm64-gnullvm` | `gnullvm` release lane; MSYS2 clang also compiles PCRE2. | Release build command plus a run without MSYS2 and a PCRE2 search [passed](https://github.com/meop/ripgrep/actions/runs/37182303411). | Open the PR; ripgrep's AI policy wants the body in your own words. |
 | bottom | `ci/windows-arm64-gnullvm` | `gnullvm` release lane in `build_releases.yml`; flows through the existing Windows signing. | Release build command plus a run without MSYS2 [passed](https://github.com/meop/bottom/actions/runs/37182408585). | bottom wants an issue first, written by you. |
-| dust | `ci/windows-arm64-gnullvm` | `gnullvm` release lane. | Full CI matrix plus a run without MSYS2 [passed](https://github.com/meop/dust/actions/runs/37182269948). Its RISC-V job requests `ubuntu-24.04-riscv`, which this account lacks, so fork runs never finish on their own. | [PR #632](https://github.com/bootandy/dust/pull/632), opened 2026-10-04. |
-| ouch | `windows-arm64-gnullvm` (the fork has a `ci` branch, so `ci/` names cannot be pushed) | `gnullvm` lane built natively, so its tests run on ARM64; MSYS2 clang compiles the C and C++ codecs, and bzip3's bindgen gets MSYS2's libclang plus `--target=aarch64-w64-mingw32`, since clang rejects the `gnullvm` suffix. | Build, 117 tests, and a run without MSYS2 [passed](https://github.com/meop/ouch/actions/runs/37183581297); `+crt-static` also kept the C++ runtime out of its imports. | Proposal issue [#1094](https://github.com/ouch-org/ouch/issues/1094), opened 2026-10-04. |
-| qsv | `ci/windows-arm64-gnullvm` | `gnullvm` entry in the Windows ARM64 publish workflow, `+crt-static` in its `RUSTFLAGS`. | Running; the first run built the fork's stale 22.0.1 tag, which predates the `readstat` feature. | PR, once proven. |
-| zoxide | `winget-wix-installer` | WiX MSI beside the portable ZIP, as Starship ships. | On x64 and real ARM64 Windows the MSI installs a real `zoxide.exe` of the right architecture, the machine PATH finds it, it runs over SSH, and uninstall is clean ([run](https://github.com/meop/zoxide/actions/runs/37183594306)). A winget-style symlink on the machine PATH also ran over SSH on the runner, so CI does not reproduce #1180; reproduce it on a real machine before relying on it in the PR. | PR; the maintainer asked for it in #1180. Real-machine test steps are on fork branch `winget-wix-smoke` (`WINDOWS-MSI-TEST.md`, fork PR `meop/zoxide#1`). |
+| zoxide | `winget-wix-installer` | WiX MSI beside the portable ZIP, as Starship ships. | On x64 and real ARM64 Windows the MSI installs a real `zoxide.exe` of the right architecture, the machine PATH finds it, it runs over SSH, and uninstall is clean ([run](https://github.com/meop/zoxide/actions/runs/37183594306)). A winget-style symlink on the machine PATH also ran over SSH on the runner, so CI does not reproduce #1180; On glass (Windows 11 26H2 x64, administrator account, pwsh as SSH shell) the MSI installed, ran over SSH from cmd, PowerShell and nu, and uninstalled cleanly, but the portable symlink also worked over SSH, even owned by the user, so #1180 did not reproduce there either. | You are reproducing #1180 on the machine where you saw it; then the PR (the maintainer asked for it in #1180). Real-machine test steps are on fork branch `winget-wix-smoke` (`WINDOWS-MSI-TEST.md`, fork PR `meop/zoxide#1`). |
 | Starship | `linux-arm64-gnu-smoke` | Native Linux ARM64 GNU release lane. | [Passed](https://github.com/meop/starship/actions/runs/33569201148) 2026-09-01. | Low value: ARM64 already ships a static musl build. |
 
 ## Handoffs and blocked work
@@ -82,7 +82,7 @@ Starship ships.
 | Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration. |
 | fzf | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
 | Yazi | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
-| zoxide | `winget-wix-installer` | MSI build and install proven in CI (see Fork work); the SSH failure still needs a real-machine repro. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
+| zoxide | `winget-wix-installer` | MSI proven in CI and on a real x64 machine; #1180's SSH failure has not reproduced yet. You are retrying it on the original machine. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
 
 ## Backlog
 
@@ -192,20 +192,26 @@ work.
 | Project | Clone | Fork | Branches |
 | --- | --- | --- | --- |
 | Atuin | yes | yes | `dist/windows-arm64-native` (proven, awaiting your PR), `winget-wix-installer` |
+| bottom | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your issue) |
 | Charm meta | yes | yes | none (for the Gum/VHS change) |
 | Delta | yes | yes | `ci/windows-arm64-release-pr` (PR #2267), `ci/linux-arm64-musl-release-pr` (PR #2268) |
+| dust | yes | yes | `ci/windows-arm64-gnullvm` (PR #632) |
+| fd | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your issue) |
 | fzf | yes | yes | `winget-wix-installer` |
+| GHC | yes (from gitlab.haskell.org) | no; needs your gitlab.haskell.org account | `wip/windows-aarch64-native` (local; native Windows ARM64 GHC) |
 | Gum, VHS | yes | yes | `windows-arm64-release` (fork smoke for the meta change) |
 | hexyl | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #292); PR #291's branch on the fork only |
 | lsd | yes | yes | `ci/windows-arm64-gnullvm` (PR #1244); PR #1237's branch on the fork only |
 | OpenCode | yes | no | none |
+| ouch | yes | yes | `windows-arm64-gnullvm` (awaiting issue #1094) |
 | pastel | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #322); PR #320's branch `ci/platform-release-matrix` on the fork |
-| QSV | yes | yes | `ci/linux-arm64-musl-release` (PR #4721) |
+| QSV | yes | yes | `ci/linux-arm64-musl-release` (PR #4721), `ci/windows-arm64-gnullvm` (PR #4722), `windows-arm64-gnullvm-smoke` (fork-only) |
 | Restic | yes | yes | `windows-arm64-release` (handoff; fork PR `meop/restic#1`) |
+| ripgrep | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your PR) |
 | SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |
 | Starship | yes | yes | `linux-arm64-gnu-smoke` |
 | Typos | no | yes | PR #1602's branch on the fork only |
 | Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
 | xan | yes | yes | `ci/arm64-release-targets` (awaiting issue #1185) |
 | Yazi | yes | yes | `winget-wix-installer` |
-| zoxide | yes | yes | `winget-wix-installer` |
+| zoxide | yes | yes | `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
