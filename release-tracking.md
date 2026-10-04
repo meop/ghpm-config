@@ -51,10 +51,10 @@ the project's pending entry into `repo.toml` if its platform gap is closed.
 | fd | `ci/windows-arm64-gnullvm` | Windows ARM64 `gnullvm` lane on `windows-11-arm`, `+crt-static`. | Full CI matrix plus a run without MSYS2 [passed](https://github.com/meop/fd/actions/runs/37182244324). | fd asks for an issue first, written by you. |
 | ripgrep | `ci/windows-arm64-gnullvm` | `gnullvm` release lane; MSYS2 clang also compiles PCRE2. | Release build command plus a run without MSYS2 and a PCRE2 search [passed](https://github.com/meop/ripgrep/actions/runs/37182303411). | Open the PR; ripgrep's AI policy wants the body in your own words. |
 | bottom | `ci/windows-arm64-gnullvm` | `gnullvm` release lane in `build_releases.yml`; flows through the existing Windows signing. | Release build command plus a run without MSYS2 [passed](https://github.com/meop/bottom/actions/runs/37182408585). | bottom wants an issue first, written by you. |
-| dust | `ci/windows-arm64-gnullvm` | `gnullvm` release lane. | Running. | PR, once proven. |
-| ouch | `windows-arm64-gnullvm` (the fork has a `ci` branch, so `ci/` names cannot be pushed) | `gnullvm` lane built natively, so its tests run on ARM64; MSYS2 clang compiles the C and C++ codecs. | Running. | ouch wants an issue first. |
+| dust | `ci/windows-arm64-gnullvm` | `gnullvm` release lane. | Full CI matrix plus a run without MSYS2 [passed](https://github.com/meop/dust/actions/runs/37182269948). Its RISC-V job requests `ubuntu-24.04-riscv`, which this account lacks, so fork runs never finish on their own. | PR (no contribution policy); held until you decide whether to file the `gnullvm` changes. |
+| ouch | `windows-arm64-gnullvm` (the fork has a `ci` branch, so `ci/` names cannot be pushed) | `gnullvm` lane built natively, so its tests run on ARM64; MSYS2 clang compiles the C and C++ codecs, and bzip3's bindgen gets MSYS2's libclang plus `--target=aarch64-w64-mingw32`, since clang rejects the `gnullvm` suffix. | Build, 117 tests, and a run without MSYS2 [passed](https://github.com/meop/ouch/actions/runs/37183581297); `+crt-static` also kept the C++ runtime out of its imports. | Issue first; held until you decide. |
 | qsv | `ci/windows-arm64-gnullvm` | `gnullvm` entry in the Windows ARM64 publish workflow, `+crt-static` in its `RUSTFLAGS`. | Running; the first run built the fork's stale 22.0.1 tag, which predates the `readstat` feature. | PR, once proven. |
-| zoxide | `winget-wix-installer` | WiX MSI beside the portable ZIP, as Starship ships. | On x64 and real ARM64 Windows the MSI installs a real `zoxide.exe` of the right architecture, the machine PATH finds it, and uninstall is clean ([run](https://github.com/meop/zoxide/actions/runs/37181521270)); an SSH-session check is running. | PR; the maintainer asked for it in #1180. |
+| zoxide | `winget-wix-installer` | WiX MSI beside the portable ZIP, as Starship ships. | On x64 and real ARM64 Windows the MSI installs a real `zoxide.exe` of the right architecture, the machine PATH finds it, it runs over SSH, and uninstall is clean ([run](https://github.com/meop/zoxide/actions/runs/37183594306)). A winget-style symlink on the machine PATH also ran over SSH on the runner, so CI does not reproduce #1180; reproduce it on a real machine before relying on it in the PR. | PR; the maintainer asked for it in #1180. |
 | Starship | `linux-arm64-gnu-smoke` | Native Linux ARM64 GNU release lane. | [Passed](https://github.com/meop/starship/actions/runs/33569201148) 2026-09-01. | Low value: ARM64 already ships a static musl build. |
 
 ## Handoffs and blocked work
@@ -77,7 +77,7 @@ Starship ships.
 | Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration. |
 | fzf | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
 | Yazi | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
-| zoxide | `winget-wix-installer` | WIP; build, install, and winget preference still need verification. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
+| zoxide | `winget-wix-installer` | MSI build and install proven in CI (see Fork work); the SSH failure still needs a real-machine repro. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
 
 ## Backlog
 
