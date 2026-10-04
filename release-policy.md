@@ -59,6 +59,10 @@ release.
 Do not infer an ABI from a filename. Use the release workflow, the target
 triple, or an inspected binary.
 
+How ghpm itself orders these variants when a release offers several (MSVC
+before GNU on Windows, GNU before musl on Linux) is explained in ghpm's
+[docs/asset-variants.md](https://github.com/meop/ghpm/blob/main/docs/asset-variants.md).
+
 ### Windows ABI parity
 
 Windows ARM64 should ship the same ABI families as Windows x64. If x64 ships
