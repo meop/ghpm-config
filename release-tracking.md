@@ -97,7 +97,7 @@ and scoop packages.
 | Project | Branch | State |
 | --- | --- | --- |
 | Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration. |
-| fzf | `winget-wix-installer` | WIP WiX template and release job; next: verify in CI and with `repro-ssh.ps1`. |
+| fzf | `winget-wix-installer` | MSI proven: fork smoke run builds both MSIs as release.yml does (WiX moved to a Windows job; it does not run on macOS) and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/fzf/actions/runs/37306258749)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). PR next; fzf's template requires the description in your own words with real-world context. |
 | Yazi | `winget-wix-installer` | WIP WiX template and release job; next: verify in CI and with `repro-ssh.ps1`. |
 | zoxide | `winget-wix-installer` | MSI proven in CI and on a real x64 machine, and #1180's SSH failure reproduced with the portable install. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
 
