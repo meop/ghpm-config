@@ -22,7 +22,7 @@ variants are in [release-matrix.md](release-matrix.md).
 | SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
 | Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28; awaiting re-review. | Fork release matrix. |
 | Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
-| xan | Windows ARM64 (MSVC) and Linux ARM64 musl | [#1185](https://github.com/medialab/xan/issues/1185), [PR #1186](https://github.com/medialab/xan/pull/1186) | The maintainer welcomed it on 2026-10-05; PR opened the same day. | Release action in dry-run mode; ARM64 musl binary static and runs on ARM64, `xan.exe` runs on Windows ARM64 ([run](https://github.com/meop/xan/actions/runs/37176732631)). |
+| xan | Windows ARM64 (MSVC) and Linux ARM64 musl | [#1185](https://github.com/medialab/xan/issues/1185), [PR #1186](https://github.com/medialab/xan/pull/1186) | The maintainer welcomed it on 2026-10-05; PR opened the same day. He asked for the targets in the README (added) and to drop the LLM co-author lines on squash (agreed). | Release action in dry-run mode; ARM64 musl binary static and runs on ARM64, `xan.exe` runs on Windows ARM64 ([run](https://github.com/meop/xan/actions/runs/37176732631)). |
 | zellij | Windows ARM64 | [PR #5090](https://github.com/zellij-org/zellij/pull/5090) | Third-party PR open since 2026-04 with no review. | — |
 | zoxide | WiX/MSI installer for winget | [#1180](https://github.com/ajeetdsouza/zoxide/issues/1180) | Maintainer asked for an MSI PR on 2026-05-10. Not yet submitted; see [packaging work](#packaging-work). | — |
 | Gum, VHS | Windows ARM64 | Gum [#1139](https://github.com/charmbracelet/gum/discussions/1139), VHS [#780](https://github.com/charmbracelet/vhs/discussions/780) | Idea discussions, no response. Needs the [meta#305](https://github.com/charmbracelet/meta/pull/305) change in `goreleaser-full.yaml` (Gum) and `goreleaser-vhs.yaml` (VHS). | Fork smokes on `windows-arm64-release`. |
@@ -88,6 +88,11 @@ affected the same way. Reproduced 2026-10-05 for zoxide with
 logged in at the console (it installs from a medium-integrity interactive
 task) and works for any winget id and MSI.
 
+winget manifests: zoxide, fzf and Yazi run winget-releaser on each release,
+and each change widens its installers filter to include the MSI, so their
+manifests update themselves. Scoop needs nothing: its shims are real `.exe`
+files, not links, as are ghpm's.
+
 The fix: an MSI per architecture alongside the ZIP, as Starship and
 PowerShell ship, installing a real executable under Program Files with its
 own machine PATH entry, so there is no link. The goal is parity across the
@@ -96,7 +101,7 @@ and scoop packages.
 
 | Project | Branch | State |
 | --- | --- | --- |
-| Atuin | `winget-wix-installer` | MSI proven: redone on current main with cargo-dist 0.31.0 (`atuin-server` keeps its installers); fork smoke with the ARM64 commit builds and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/atuin/actions/runs/37311895415)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). With the ARM64 change, `windows-11-arm` needs WiX 3.14.1 installed (cargo-dist `github-build-setup`); see the branch notes. |
+| Atuin | `winget-wix-installer` | MSI proven: redone on current main with cargo-dist 0.31.0 (`atuin-server` keeps its installers); fork smoke with the ARM64 commit builds and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/atuin/actions/runs/37311895415)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). With the ARM64 change, `windows-11-arm` needs WiX 3.14.1 installed (cargo-dist `github-build-setup`); see the branch notes. Atuin has no winget automation: its winget-pkgs manifest is updated by a community member, so the MSI also needs adding there after the first release that ships it. |
 | fzf | `winget-wix-installer` | MSI proven: fork smoke run builds both MSIs as release.yml does (WiX moved to a Windows job; it does not run on macOS) and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/fzf/actions/runs/37306258749)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). PR next; fzf's template requires the description in your own words with real-world context. |
 | Yazi | `winget-wix-installer` | MSI proven: `cargo xtask dist` now builds it (the WIP's separate step had failed silently every time); fork smoke installs `yazi` and `ya`, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/yazi/actions/runs/37309773805)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). Yazi's AI policy needs a design issue approved first and human-written issue, PR and commit text. |
 | zoxide | `winget-wix-installer` | MSI proven in CI and on a real x64 machine, and #1180's SSH failure reproduced with the portable install. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
