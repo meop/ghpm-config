@@ -98,7 +98,7 @@ and scoop packages.
 | --- | --- | --- |
 | Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration. |
 | fzf | `winget-wix-installer` | MSI proven: fork smoke run builds both MSIs as release.yml does (WiX moved to a Windows job; it does not run on macOS) and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/fzf/actions/runs/37306258749)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). PR next; fzf's template requires the description in your own words with real-world context. |
-| Yazi | `winget-wix-installer` | WIP WiX template and release job; next: verify in CI and with `repro-ssh.ps1`. |
+| Yazi | `winget-wix-installer` | MSI proven: `cargo xtask dist` now builds it (the WIP's separate step had failed silently every time); fork smoke installs `yazi` and `ya`, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/yazi/actions/runs/37309773805)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). Yazi's AI policy needs a design issue approved first and human-written issue, PR and commit text. |
 | zoxide | `winget-wix-installer` | MSI proven in CI and on a real x64 machine, and #1180's SSH failure reproduced with the portable install. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
 
 ## Backlog
