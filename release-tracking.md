@@ -198,6 +198,7 @@ work.
 | fd | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your issue) |
 | fzf | yes | yes | `winget-wix-installer` |
 | GHC | yes (from gitlab.haskell.org) | no; your gitlab.haskell.org account needs verification first (steps in the branch's `windows-aarch64/TODO.md`) | `wip/windows-aarch64-native` (local; native Windows ARM64 GHC) |
+| ghc-windows-aarch64 | yes | own repo | Public test repo for the GHC branch's Windows AArch64 builds: releases hold the bindist, `test-ghc.yml` checks it on `windows-11-arm` |
 | Gum, VHS | yes | yes | `windows-arm64-release` (fork smoke for the meta change) |
 | hexyl | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #292); PR #291's branch on the fork only |
 | lsd | yes | yes | `ci/windows-arm64-gnullvm` (PR #1244); PR #1237's branch on the fork only |
