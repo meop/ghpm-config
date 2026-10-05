@@ -22,7 +22,7 @@ variants are in [release-matrix.md](release-matrix.md).
 | SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
 | Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28; awaiting re-review. | Fork release matrix. |
 | Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
-| xan | Windows ARM64 (MSVC) and Linux ARM64 musl | [#1185](https://github.com/medialab/xan/issues/1185) | Issue opened 2026-10-04, as xan asks before a contribution. Branch `ci/arm64-release-targets` is ready for a PR if they agree. | Release action in dry-run mode; ARM64 musl binary static and runs on ARM64, `xan.exe` runs on Windows ARM64 ([run](https://github.com/meop/xan/actions/runs/37176732631)). |
+| xan | Windows ARM64 (MSVC) and Linux ARM64 musl | [#1185](https://github.com/medialab/xan/issues/1185), [PR #1186](https://github.com/medialab/xan/pull/1186) | The maintainer welcomed it on 2026-10-05; PR opened the same day. | Release action in dry-run mode; ARM64 musl binary static and runs on ARM64, `xan.exe` runs on Windows ARM64 ([run](https://github.com/meop/xan/actions/runs/37176732631)). |
 | zellij | Windows ARM64 | [PR #5090](https://github.com/zellij-org/zellij/pull/5090) | Third-party PR open since 2026-04 with no review. | — |
 | zoxide | WiX/MSI installer for winget | [#1180](https://github.com/ajeetdsouza/zoxide/issues/1180) | Maintainer asked for an MSI PR on 2026-05-10. Not yet submitted; see [packaging work](#packaging-work). | — |
 | Gum, VHS | Windows ARM64 | Gum [#1139](https://github.com/charmbracelet/gum/discussions/1139), VHS [#780](https://github.com/charmbracelet/vhs/discussions/780) | Idea discussions, no response. Needs the [meta#305](https://github.com/charmbracelet/meta/pull/305) change in `goreleaser-full.yaml` (Gum) and `goreleaser-vhs.yaml` (VHS). | Fork smokes on `windows-arm64-release`. |
@@ -212,6 +212,6 @@ work.
 | Starship | yes | yes | `linux-arm64-gnu-smoke` |
 | Typos | no | yes | PR #1602's branch on the fork only |
 | Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
-| xan | yes | yes | `ci/arm64-release-targets` (awaiting issue #1185) |
+| xan | yes | yes | `ci/arm64-release-targets` (PR #1186) |
 | Yazi | yes | yes | `winget-wix-installer` |
 | zoxide | yes | yes | `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
