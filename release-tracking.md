@@ -71,16 +71,34 @@ MinGW toolchain), though no registry project ships one yet.
 
 ### Packaging work
 
-Winget installs these as portable ZIPs, which put a symlink in the WinGet
-Links folder. Windows does not follow those symlinks over SSH by default, so
-shell init hooks break. The goal is a WiX/MSI installer alongside the ZIP, as
-Starship ships.
+Scope: the four shell-integrated tools (Atuin, fzf, Yazi, zoxide), whose
+failure is noticed immediately because a shell init hook runs them. Not all
+ghpm tools.
+
+The problem: winget installs these as portable ZIPs, which put a symlink in
+`%LOCALAPPDATA%\Microsoft\WinGet\Links`. The link is created by whoever runs
+winget, normally a non-elevated terminal. An administrator's SSH session is
+elevated (OpenSSH logs admins on with their full token), and Windows'
+redirection trust stops an elevated process from following a link a less
+privileged process created: "The path cannot be traversed because it contains
+an untrusted mount point" (error 448). A standard user is unaffected (both
+sides run at medium integrity); a local "Run as administrator" terminal is
+affected the same way. Reproduced 2026-10-05 for zoxide with
+`windows-msi-test/repro-ssh.ps1` on the zoxide fork, which needs the user
+logged in at the console (it installs from a medium-integrity interactive
+task) and works for any winget id and MSI.
+
+The fix: an MSI per architecture alongside the ZIP, as Starship and
+PowerShell ship, installing a real executable under Program Files with its
+own machine PATH entry, so there is no link. The goal is parity across the
+four: the same winget install methods (MSI by default, ZIP still available)
+and scoop packages.
 
 | Project | Branch | State |
 | --- | --- | --- |
 | Atuin | `winget-wix-installer` | WIP cargo-dist WiX/MSI configuration. |
-| fzf | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
-| Yazi | `winget-wix-installer` | WIP WiX template and release job; unverified on Windows. |
+| fzf | `winget-wix-installer` | WIP WiX template and release job; next: verify in CI and with `repro-ssh.ps1`. |
+| Yazi | `winget-wix-installer` | WIP WiX template and release job; next: verify in CI and with `repro-ssh.ps1`. |
 | zoxide | `winget-wix-installer` | MSI proven in CI and on a real x64 machine, and #1180's SSH failure reproduced with the portable install. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). |
 
 ## Backlog
