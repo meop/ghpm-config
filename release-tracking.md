@@ -20,9 +20,8 @@ variants are in [release-matrix.md](release-matrix.md).
 | pastel | Windows ARM64 (MSVC and `gnullvm`) | [PR #320](https://github.com/sharkdp/pastel/pull/320) | Open since 2026-08-16, no review; `gnullvm` added 2026-10-04. | Full [release matrix](https://github.com/meop/pastel/actions/runs/37170366243), including a run without MSYS2. |
 | pastel | Linux ARM64 musl | [PR #322](https://github.com/sharkdp/pastel/pull/322) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
 | SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
-| Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28; awaiting re-review. | Fork release matrix. |
+| Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28. 2026-10-06: rebased onto `main` (an earlier rebase onto the frozen `master` had pulled in a maintainer commit), and the `windows-11-arm` test-matrix commit dropped after review: typos tests only on the default runners, as for Linux ARM64. Now release-only, awaiting re-review. | Fork release matrix. |
 | Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
-| xan | Windows ARM64 (MSVC) and Linux ARM64 musl | [#1185](https://github.com/medialab/xan/issues/1185), [PR #1186](https://github.com/medialab/xan/pull/1186) | The maintainer welcomed it on 2026-10-05; PR opened the same day. He asked for the targets in the README (added) and to drop the LLM co-author lines on squash (agreed). | Release action in dry-run mode; ARM64 musl binary static and runs on ARM64, `xan.exe` runs on Windows ARM64 ([run](https://github.com/meop/xan/actions/runs/37176732631)). |
 | zellij | Windows ARM64 | [PR #5090](https://github.com/zellij-org/zellij/pull/5090) | Third-party PR open since 2026-04 with no review. | — |
 | zoxide | WiX/MSI installer for winget | [#1180](https://github.com/ajeetdsouza/zoxide/issues/1180) | Maintainer asked for an MSI PR on 2026-05-10. Not yet submitted; see [packaging work](#packaging-work). | — |
 | Gum, VHS | Windows ARM64 | Gum [#1139](https://github.com/charmbracelet/gum/discussions/1139), VHS [#780](https://github.com/charmbracelet/vhs/discussions/780) | Idea discussions, no response. Needs the [meta#305](https://github.com/charmbracelet/meta/pull/305) change in `goreleaser-full.yaml` (Gum) and `goreleaser-vhs.yaml` (VHS). | Fork smokes on `windows-arm64-release`. |
@@ -38,6 +37,7 @@ variants are in [release-matrix.md](release-matrix.md).
 | Procs | Windows ARM64 ([PR #961](https://github.com/dalance/procs/pull/961)) | 2026-09-07 | v0.14.12 (2026-06-25) |
 | SD | Linux ARM64 GNU (already in the release workflow) | — | v1.1.0 (2026-02-25) |
 | Vivid | Windows ARM64 MSVC ([PR #228](https://github.com/sharkdp/vivid/pull/228)), Linux ARM64 musl ([PR #233](https://github.com/sharkdp/vivid/pull/233)) | 2026-08-17, 2026-08-31 | v0.11.1 (2026-04-09) |
+| xan | Windows ARM64 MSVC and Linux ARM64 musl ([PR #1186](https://github.com/medialab/xan/pull/1186)); the maintainer moved the musl build to `ubuntu-latest` with cross, which the fork proof used but the PR missed | 2026-10-06 | 0.61.0 (2026-09-11); pre-release [0.62.0-rc.2](https://github.com/medialab/xan/releases/tag/0.62.0-rc.2) ships both targets, tested on ARM64 Windows and Linux |
 
 When a release ships, check [release-matrix.md](release-matrix.md), and move
 the project's pending entry into `repo.toml` if its platform gap is closed.
@@ -217,13 +217,12 @@ work.
 | OpenCode | yes | no | none |
 | ouch | yes | yes | `windows-arm64-gnullvm` (awaiting issue #1094) |
 | pastel | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #322); PR #320's branch `ci/platform-release-matrix` on the fork |
-| QSV | yes | yes | `ci/linux-arm64-musl-release` and `ci/windows-arm64-gnullvm` (both merged and released in 24.0.0; ready to delete), `windows-arm64-gnullvm-smoke` (fork-only) |
 | Restic | yes | yes | `windows-arm64-release` (handoff; fork PR `meop/restic#1`) |
 | ripgrep | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your PR) |
 | SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |
 | Starship | yes | yes | `linux-arm64-gnu-smoke` |
-| Typos | no | yes | PR #1602's branch on the fork only |
+| Typos | yes | yes | `ci/platform-release-matrix` (PR #1602) |
 | Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
-| xan | yes | yes | `ci/arm64-release-targets` (PR #1186) |
+| xan | yes | yes | `ci/arm64-release-targets` (PR #1186, merged), `rc-smoke-0.62.0-rc.2` (fork-only; backs the rc.2 test run linked on the PR) |
 | Yazi | yes | yes | `winget-wix-installer` |
 | zoxide | yes | yes | `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
