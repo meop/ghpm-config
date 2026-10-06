@@ -31,14 +31,11 @@ variants are in [release-matrix.md](release-matrix.md).
 
 | Project | Change | Merged | Latest release |
 | --- | --- | --- | --- |
-| GDU | Windows ARM64 ([PR #647](https://github.com/dundee/gdu/pull/647)) | 2026-10-02 | v5.37.0 (2026-08-18) |
 | Glow | Windows ARM64 ([meta#305](https://github.com/charmbracelet/meta/pull/305), by a maintainer) | 2026-09-30 | v3.0.0 (2026-08-11) |
 | helix | Windows ARM64 ([PR #15557](https://github.com/helix-editor/helix/pull/15557), not ours) | 2026-05-25 | 25.07.1 (2025-07-18) |
-| hyperfine | Windows ARM64 ([PR #922](https://github.com/sharkdp/hyperfine/pull/922)), Linux ARM64 musl ([PR #924](https://github.com/sharkdp/hyperfine/pull/924)) | 2026-10-02 | v1.20.0 (2025-11-18) |
 | lsd | Windows ARM64 MSVC ([PR #1236](https://github.com/lsd-rs/lsd/pull/1236)) | 2026-08-16 | v1.2.0 (2025-10-12) |
 | mdBook | Windows ARM64 ([PR #3193](https://github.com/rust-lang/mdBook/pull/3193)), Linux ARM64 GNU ([PR #3207](https://github.com/rust-lang/mdBook/pull/3207)) | 2026-08-17, 2026-09-02 | v0.5.4 (2026-07-06) |
 | Procs | Windows ARM64 ([PR #961](https://github.com/dalance/procs/pull/961)) | 2026-09-07 | v0.14.12 (2026-06-25) |
-| qsv | Linux ARM64 musl ([PR #4721](https://github.com/dathere/qsv/pull/4721)), Windows ARM64 `gnullvm` ([PR #4722](https://github.com/dathere/qsv/pull/4722)) | 2026-10-04 | 23.0.1 (2026-09-13) |
 | SD | Linux ARM64 GNU (already in the release workflow) | — | v1.1.0 (2026-02-25) |
 | Vivid | Windows ARM64 MSVC ([PR #228](https://github.com/sharkdp/vivid/pull/228)), Linux ARM64 musl ([PR #233](https://github.com/sharkdp/vivid/pull/233)) | 2026-08-17, 2026-08-31 | v0.11.1 (2026-04-09) |
 
@@ -133,10 +130,6 @@ descr = "Command-line tool for building and packaging Haskell projects."
 uri = "github.com/dandavison/delta"
 descr = "Syntax-highlighting pager for git, diff, and grep output."
 
-[gdu]
-uri = "github.com/dundee/gdu"
-descr = "Fast disk usage analyzer with a console interface."
-
 [glow]
 uri = "github.com/charmbracelet/glow"
 descr = "Render markdown on the terminal with styling."
@@ -156,10 +149,6 @@ descr = "A post-modern modal text editor."
 [hexyl]
 uri = "github.com/sharkdp/hexyl"
 descr = "Command-line hex viewer with colored output."
-
-[hyperfine]
-uri = "github.com/sharkdp/hyperfine"
-descr = "Command-line benchmarking tool with statistical analysis."
 
 [lsd]
 uri = "github.com/lsd-rs/lsd"
@@ -228,7 +217,7 @@ work.
 | OpenCode | yes | no | none |
 | ouch | yes | yes | `windows-arm64-gnullvm` (awaiting issue #1094) |
 | pastel | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #322); PR #320's branch `ci/platform-release-matrix` on the fork |
-| QSV | yes | yes | `ci/linux-arm64-musl-release` and `ci/windows-arm64-gnullvm` (both merged; delete after the release), `windows-arm64-gnullvm-smoke` (fork-only) |
+| QSV | yes | yes | `ci/linux-arm64-musl-release` and `ci/windows-arm64-gnullvm` (both merged and released in 24.0.0; ready to delete), `windows-arm64-gnullvm-smoke` (fork-only) |
 | Restic | yes | yes | `windows-arm64-release` (handoff; fork PR `meop/restic#1`) |
 | ripgrep | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your PR) |
 | SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |

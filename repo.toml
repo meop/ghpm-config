@@ -98,6 +98,10 @@ descr = "A simple, fast, and user-friendly alternative to find."
 uri = "github.com/junegunn/fzf"
 descr = "Command-line fuzzy finder."
 
+[gdu]
+uri = "github.com/dundee/gdu"
+descr = "Fast disk usage analyzer with a console interface."
+
 [git-lfs]
 uri = "github.com/git-lfs/git-lfs"
 descr = "Git extension for versioning large files."
@@ -113,6 +117,10 @@ descr = "Builds, packages, and publishes releases for Go projects."
 [grpcurl]
 uri = "github.com/fullstorydev/grpcurl"
 descr = "Like curl, but for interacting with gRPC servers."
+
+[hyperfine]
+uri = "github.com/sharkdp/hyperfine"
+descr = "Command-line benchmarking tool with statistical analysis."
 
 [jq]
 uri = "github.com/jqlang/jq"
