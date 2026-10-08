@@ -223,6 +223,6 @@ work.
 | Starship | yes | yes | `linux-arm64-gnu-smoke` |
 | Typos | yes | yes | `ci/platform-release-matrix` (PR #1602) |
 | Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
-| xan | yes | yes | `ci/arm64-release-targets` (PR #1186, merged), `rc-smoke-0.62.0-rc.2` (fork-only; backs the rc.2 test run linked on the PR) |
+| xan | yes | yes | `ci/arm64-release-targets` (PR #1186, merged) |
 | Yazi | yes | yes | `winget-wix-installer` |
 | zoxide | yes | yes | `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
