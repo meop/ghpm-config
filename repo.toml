@@ -89,6 +89,7 @@ descr = "A friendlier df, showing disk usage and free space as tables."
 [dust]
 uri = "github.com/bootandy/dust"
 descr = "A more intuitive du, showing which directories take the space."
+aliases = ["du-dust"]
 
 [fastfetch]
 uri = "github.com/fastfetch-cli/fastfetch"
@@ -97,6 +98,7 @@ descr = "Fast, feature-rich system information tool in the neofetch style."
 [fd]
 uri = "github.com/sharkdp/fd"
 descr = "A simple, fast, and user-friendly alternative to find."
+aliases = ["fd-find"]
 
 [fzf]
 uri = "github.com/junegunn/fzf"
@@ -153,6 +155,7 @@ descr = "Terminal UI for git commands."
 ["llama.cpp"]
 uri = "github.com/ggml-org/llama.cpp"
 descr = "LLM inference in C/C++."
+aliases = ["llama-cpp"]
 
 [mise]
 uri = "github.com/jdx/mise"
@@ -242,11 +245,11 @@ aliases = ["go-task"]
 [tealdeer]
 uri = "github.com/dbrgn/tealdeer"
 descr = "A very fast implementation of tldr community man pages."
-aliases = ["tldr"]
 
 [tree-sitter]
 uri = "github.com/tree-sitter/tree-sitter"
 descr = "Incremental parsing system for programming tools."
+aliases = ["tree-sitter-cli"]
 
 [uv]
 uri = "github.com/astral-sh/uv"
