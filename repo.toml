@@ -21,6 +21,7 @@ descr = "Formatter and linter for web projects, replacing Prettier and ESLint."
 [btm]
 uri = "github.com/ClementTsang/bottom"
 descr = "Cross-platform graphical process and system monitor."
+aliases = ["bottom"]
 
 [bun]
 uri = "github.com/oven-sh/bun"
@@ -37,6 +38,7 @@ descr = "Dotfile manager for multiple diverse machines."
 [claude]
 uri = "github.com/anthropics/claude-code"
 descr = "Anthropic's agentic coding tool that lives in your terminal."
+aliases = ["claude-code"]
 
 [codegraph]
 uri = "github.com/colbymchenry/codegraph"
@@ -61,6 +63,7 @@ descr = "A modern runtime for JavaScript and TypeScript."
 [difftastic]
 uri = "github.com/Wilfred/difftastic"
 descr = "Structural diff that compares syntax trees rather than lines."
+aliases = ["difft"]
 
 [direnv]
 uri = "github.com/direnv/direnv"
@@ -77,6 +80,7 @@ descr = "Pluggable code formatting platform that unifies your formatters."
 [dua]
 uri = "github.com/Byron/dua-cli"
 descr = "Disk usage viewer with an interactive mode for deleting."
+aliases = ["dua-cli"]
 
 [duf]
 uri = "github.com/muesli/duf"
@@ -161,10 +165,12 @@ descr = "Popular fonts patched with icon glyph collections."
 [nu]
 uri = "github.com/nushell/nushell"
 descr = "A shell whose pipelines carry structured data instead of text."
+aliases = ["nushell"]
 
 [nvim]
 uri = "github.com/neovim/neovim"
 descr = "Vim fork focused on extensibility and usability."
+aliases = ["neovim"]
 
 [opencode]
 uri = "github.com/anomalyco/opencode"
@@ -185,6 +191,7 @@ descr = "PlayStation Network downloader for updates and firmware."
 [pwsh]
 uri = "github.com/PowerShell/PowerShell"
 descr = "PowerShell, cross-platform."
+aliases = ["powershell"]
 
 [qsv]
 uri = "github.com/dathere/qsv"
@@ -197,6 +204,7 @@ descr = "Rsync for cloud storage, across dozens of providers."
 [rg]
 uri = "github.com/BurntSushi/ripgrep"
 descr = "Recursively search directories with regex, respecting gitignore."
+aliases = ["ripgrep"]
 
 [ruff]
 uri = "github.com/astral-sh/ruff"
@@ -229,10 +237,12 @@ descr = "TOML formatter, linter, and language server."
 [task]
 uri = "github.com/go-task/task"
 descr = "Cross-platform build tool inspired by Make."
+aliases = ["go-task"]
 
 [tealdeer]
 uri = "github.com/dbrgn/tealdeer"
 descr = "A very fast implementation of tldr community man pages."
+aliases = ["tldr"]
 
 [tree-sitter]
 uri = "github.com/tree-sitter/tree-sitter"

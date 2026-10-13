@@ -7,17 +7,19 @@ Package repo registry for [ghpm](https://github.com/meop/ghpm).
 One section per package, keyed by the short name users type:
 
 ```toml
-[fzf]
-uri = "github.com/junegunn/fzf"
-descr = "Command-line fuzzy finder."
+[rg]
+uri = "github.com/BurntSushi/ripgrep"
+descr = "Recursively search directories with regex, respecting gitignore."
+aliases = ["ripgrep"]
 ```
 
 - `uri` — the `github.com/owner/repo` path, no scheme.
-- `descr` — one sentence saying what the tool is. Shown by `ghpm find` and `ghpm info`.
+- `descr` — one sentence saying what the tool is. Shown by `ghpm find` and `ghpm info`, and searched by `ghpm find`.
+- `aliases` — optional. Other names the tool is commonly called. `ghpm add ripgrep` installs `rg`, and `remove`, `sync` and `info` accept the alias the same way; the package is always installed under its key.
 
 ghpm downloads this file and caches it locally at `~/.ghpm/repo/github.com/meop/ghpm-config/repo.toml`. The cache is refreshed by `ghpm refresh`.
 
-ghpm also accepts the older flat form (`fzf = "github.com/junegunn/fzf"`) in any `repo.toml` it reads, so a personal registry needs no `descr`.
+ghpm also accepts the older flat form (`fzf = "github.com/junegunn/fzf"`) in any `repo.toml` it reads, so a personal registry needs no `descr` or `aliases`.
 
 ## Adding repos
 
