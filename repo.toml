@@ -60,6 +60,10 @@ descr = "Curl frontend with HTTPie-style request syntax and formatted output."
 uri = "github.com/denoland/deno"
 descr = "A modern runtime for JavaScript and TypeScript."
 
+[deskpty]
+uri = "github.com/meop/deskpty"
+descr = "Runs commands and shells in the logged-in desktop session, over ssh too."
+
 [difftastic]
 uri = "github.com/Wilfred/difftastic"
 descr = "Structural diff that compares syntax trees rather than lines."
