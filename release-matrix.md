@@ -3,7 +3,7 @@
 Release variants of every project in `repo.toml` and every pending entry in
 [release-tracking.md](release-tracking.md#pending-registry-entries), from each
 project's latest GitHub release as of 2026-10-04; delta, gdu, hyperfine, qsv
-and typos refreshed 2026-10-06. The rules for judging these
+and typos refreshed 2026-10-06, atuin and typos 2026-10-23. The rules for judging these
 are in [release-policy.md](release-policy.md).
 
 ## Legend
@@ -27,7 +27,7 @@ are in [release-policy.md](release-policy.md).
 | actionlint | registry | v1.7.12 (2026-03-30) | yes | yes | yes | yes | yes | GitHub Actions |
 | age | registry | v1.3.2 (2026-08-29) | yes | yes | yes | yes | yes | GitHub Actions |
 | ast-grep | registry | 0.45.3 (2026-08-31) | MSVC | MSVC | GNU | GNU | yes | GitHub Actions |
-| atuin | pending | v18.23.0 (2026-09-22) | MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
+| atuin | pending | v18.24.2 (2026-10-22) | MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
 | bat | registry | v0.26.1 (2025-12-02) | MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | biome | registry | @biomejs/biome@2.5.15 (2026-09-30) | yes | yes | musl, plain | musl, plain | yes | GitHub Actions |
 | btm | registry | 0.14.9 (2026-08-27) | GNU, MSVC | MSVC | GNU, musl | GNU, musl, plain | yes | GitHub Actions |
@@ -99,7 +99,7 @@ are in [release-policy.md](release-policy.md).
 | task | registry | v3.54.0 (2026-10-01) | yes | yes | yes | yes | yes | GitHub Actions |
 | tealdeer | registry | v1.9.0 (2026-08-24) | MSVC | MSVC | musl | musl | yes | GitHub Actions |
 | tree-sitter | registry | v0.27.0 (2026-08-30) | yes | yes | yes | yes | yes | GitHub Actions |
-| typos | pending | v1.51.0 (2026-10-06) | MSVC | **missing** | musl | musl | yes | GitHub Actions |
+| typos | registry | v1.51.1 (2026-10-06) | MSVC | MSVC | musl | musl | yes | GitHub Actions |
 | uv | registry | 0.12.23 (2026-10-03) | MSVC | MSVC | GNU, musl | GNU, musl | yes | astral-releases-bot[bot] |
 | vhs | pending | v0.12.1 (2026-09-24) | yes | **missing** | yes | yes | yes | GitHub Actions |
 | vivid | pending | v0.11.1 (2026-04-09) | GNU, MSVC | **missing** | GNU, musl | GNU | yes | GitHub Actions |

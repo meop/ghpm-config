@@ -1,6 +1,6 @@
 # Release tracking
 
-Ongoing work to close release gaps, as of 2026-10-04 (packaging work updated 2026-10-21). The rules, including
+Ongoing work to close release gaps, as of 2026-10-04 (packaging work updated 2026-10-23). The rules, including
 the Starship and zellij registry exceptions, are in
 [release-policy.md](release-policy.md); each project's current release
 variants are in [release-matrix.md](release-matrix.md).
@@ -9,21 +9,24 @@ variants are in [release-matrix.md](release-matrix.md).
 
 | Project | Change | Upstream | State | Proof |
 | --- | --- | --- | --- | --- |
+| Atuin | WiX/MSI installer for winget | [PR #4527](https://github.com/atuinsh/atuin/pull/4527) | Opened 2026-10-23; a maintainer will look. Greptile flagged that the MSI left out `LICENSE` (MIT needs the notice); fixed 2026-10-23 by enabling cargo-wix's license sidecar ([run](https://github.com/meop/atuin/actions/runs/40029066758)). | [Smoke](https://github.com/meop/atuin/actions/runs/39567882355) on x64 and ARM64; winget manifest test (see [packaging work](#packaging-work)). |
 | Delta | Windows ARM64 (MSVC) | [#2223](https://github.com/dandavison/delta/issues/2223), [PR #2267](https://github.com/dandavison/delta/pull/2267) | PR opened 2026-10-04 after a month without a reply on the issue. | Native build packaged by `before_deploy.sh` on current `main` ([run](https://github.com/meop/delta/actions/runs/37178086572)). |
 | Delta | Linux ARM64 musl | [#2227](https://github.com/dandavison/delta/issues/2227), [PR #2268](https://github.com/dandavison/delta/pull/2268) | PR opened 2026-10-04. Third-party [PR #2236](https://github.com/dandavison/delta/pull/2236) (2026-09-13) makes the same change, but without `musl-tools` and with an unrelated README badge. | Static, stripped binary and `.deb` from the same [run](https://github.com/meop/delta/actions/runs/37178086572). |
 | dust | Windows ARM64 `gnullvm` | [PR #632](https://github.com/bootandy/dust/pull/632) | Opened 2026-10-04. | Full CI matrix plus a run without MSYS2 [passed](https://github.com/meop/dust/actions/runs/37182269948). The fork's RISC-V job requests `ubuntu-24.04-riscv`, which this account lacks, so fork runs never finish on their own. |
+| fzf | WiX/MSI installer for winget | Issue [#4943](https://github.com/junegunn/fzf/issues/4943) | Opened 2026-10-23 as an issue, since fzf limits PRs to collaborators; it links the ready branch `winget-msi`. | [Smoke](https://github.com/meop/fzf/actions/runs/39567886465) on x64 and ARM64. |
 | hexyl | Windows ARM64 (MSVC) | [PR #291](https://github.com/sharkdp/hexyl/pull/291) | Open since 2026-08-16; green CI, no review. | Fork release matrix. |
 | hexyl | Linux ARM64 musl | [PR #292](https://github.com/sharkdp/hexyl/pull/292) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
+| Komac | `update` drops what analysis can't detect (blocks Yazi's winget submissions) | [#1841](https://github.com/russellbanks/Komac/issues/1841), [PR #1934](https://github.com/russellbanks/Komac/pull/1934), [PR #1935](https://github.com/russellbanks/Komac/pull/1935) | 2026-10-23: commented on #1841 with a repro and a status of its six items; #1934 restores nested installer files for multi-exe ZIPs (Yazi), #1935 (stacked on it) proposes matching previous installers in general. No CI yet (first-time contributor). | Test results as comments on [#1934](https://github.com/russellbanks/Komac/pull/1934#issuecomment-6371549943) and [#1935](https://github.com/russellbanks/Komac/pull/1935#issuecomment-6371546081). |
 | lsd | Windows ARM64 `gnullvm` | [PR #1244](https://github.com/lsd-rs/lsd/pull/1244) | Opened 2026-10-04. The existing `i686-pc-windows-gnu` job fails to install its toolchain on `windows-latest`, independent of this change; noted in the description. | `+crt-static` was the only option of three that started without MSYS2 ([experiment](https://github.com/meop/lsd/actions/runs/37169967049)); full [release matrix](https://github.com/meop/lsd/actions/runs/37170362416). |
 | lsd | Enforce the committed lockfile in CI | [PR #1237](https://github.com/lsd-rs/lsd/pull/1237) | Open since 2026-08-16. | — |
 | ouch | Windows ARM64 `gnullvm` | Proposal issue [#1094](https://github.com/ouch-org/ouch/issues/1094) | Opened 2026-10-04; branch `windows-arm64-gnullvm` is ready for a PR if they agree. MSYS2 clang compiles the C and C++ codecs; bzip3's bindgen gets MSYS2's libclang plus `--target=aarch64-w64-mingw32`, since clang rejects the `gnullvm` suffix. | Build, 117 tests, and a run without MSYS2 [passed](https://github.com/meop/ouch/actions/runs/37183581297). |
 | pastel | Windows ARM64 (MSVC and `gnullvm`) | [PR #320](https://github.com/sharkdp/pastel/pull/320) | Open since 2026-08-16, no review; `gnullvm` added 2026-10-04. | Full [release matrix](https://github.com/meop/pastel/actions/runs/37170366243), including a run without MSYS2. |
 | pastel | Linux ARM64 musl | [PR #322](https://github.com/sharkdp/pastel/pull/322) | Open since 2026-08-31; green CI, no review. | Static artifact proven. |
 | SD | Windows ARM64 (MSVC and `gnullvm`) | [#329](https://github.com/chmln/sd/issues/329) (closed), [PR #354](https://github.com/chmln/sd/pull/354) | Open since 2026-09-01, no review, upstream CI not run. Static-libunwind fix pushed 2026-10-04. | `gnullvm` binary runs without MSYS2 ([run](https://github.com/meop/sd/actions/runs/37170389227)); [test workflow](https://github.com/meop/sd/actions/runs/37170388821) passes. |
-| Typos | Windows ARM64 (MSVC) | [PR #1602](https://github.com/crate-ci/typos/pull/1602) | Commits split as requested on 2026-08-28. 2026-10-06: rebased onto `main` (an earlier rebase onto the frozen `master` had pulled in a maintainer commit), and the `windows-11-arm` test-matrix commit dropped after review: typos tests only on the default runners, as for Linux ARM64. Now release-only, awaiting re-review. | Fork release matrix. |
 | Vivid | Windows ARM64 `gnullvm` | [PR #245](https://github.com/sharkdp/vivid/pull/245) | Opened 2026-10-04. | Full [release matrix](https://github.com/meop/vivid/actions/runs/37170364801), including a run without MSYS2. |
+| Yazi | WiX/MSI installer for winget | Design issue [#4440](https://github.com/sxyazi/yazi/issues/4440) | Opened 2026-10-23; Yazi's AI policy needs design approval before a PR. Branch `winget-msi` is ready. Also flags the Komac bug. | [Smoke](https://github.com/meop/yazi/actions/runs/39567889770) on x64 and ARM64. |
 | zellij | Windows ARM64 | [PR #5090](https://github.com/zellij-org/zellij/pull/5090) | Third-party PR open since 2026-04 with no review. | — |
-| zoxide | WiX/MSI installer for winget | [#1180](https://github.com/ajeetdsouza/zoxide/issues/1180) | Maintainer asked for an MSI PR on 2026-05-10. Not yet submitted; see [packaging work](#packaging-work). | — |
+| zoxide | WiX/MSI installer for winget | [#1180](https://github.com/ajeetdsouza/zoxide/issues/1180), [PR #1345](https://github.com/ajeetdsouza/zoxide/pull/1345) | The maintainer asked for an MSI PR on 2026-05-10; PR opened 2026-10-22, CI green, no review yet. | [Smoke](https://github.com/meop/zoxide/actions/runs/39567897889) on x64 and ARM64. |
 | Gum, VHS | Windows ARM64 | Gum [#1139](https://github.com/charmbracelet/gum/discussions/1139), VHS [#780](https://github.com/charmbracelet/vhs/discussions/780) | Idea discussions, no response. Needs the [meta#305](https://github.com/charmbracelet/meta/pull/305) change in `goreleaser-full.yaml` (Gum) and `goreleaser-vhs.yaml` (VHS). | Fork smokes on `windows-arm64-release`. |
 
 ## Merged, awaiting a release
@@ -87,7 +90,19 @@ task) and works for any winget id and MSI.
 
 winget manifests: zoxide, fzf and Yazi run winget-releaser on each release,
 and each change widens its installers filter to include the MSI, so their
-manifests update themselves. Scoop needs nothing: its shims are real `.exe`
+manifests update themselves. Tested 2026-10-22 in the public test repo
+`meop/winget-manifest-test` (Komac `update --dry-run` on the test assets, then
+winget on `windows-latest` and `windows-11-arm`; all green in
+[run](https://github.com/meop/winget-manifest-test/actions/runs/39874259707)
+and, for Yazi, [run](https://github.com/meop/winget-manifest-test/actions/runs/39875214984)):
+the manifest gets a `wix` installer (machine scope, ProductCode, UpgradeCode)
+beside the ZIP per architecture, as Starship's does; a fresh `winget install`
+picks the MSI, and `--installer-type portable` gets the ZIP. An existing
+portable install stays portable on `winget upgrade`, so those users need to
+uninstall and reinstall once. Komac 2.17 drops `NestedInstallerFiles` for ZIPs
+with more than one exe, so Yazi's next submission fails validation, MSI or not;
+winget-releaser@main always installs the latest Komac. Fixes are in Komac PR
+#1934 and #1935 (see above). Scoop needs nothing: its shims are real `.exe`
 files, not links, as are ghpm's.
 
 The fix: an MSI per architecture alongside the ZIP, as Starship and
@@ -98,10 +113,10 @@ and scoop packages.
 
 | Project | Branch | State |
 | --- | --- | --- |
-| Atuin | `winget-wix-installer` | MSI proven: redone on current main with cargo-dist 0.31.0 (`atuin-server` keeps its installers); fork smoke with the ARM64 commit builds and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/atuin/actions/runs/37311895415)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). With the ARM64 change, `windows-11-arm` needs WiX 3.14.1 installed (cargo-dist `github-build-setup`); see the branch notes. Atuin has no winget automation: its winget-pkgs manifest is updated by a community member, so the MSI also needs adding there after the first release that ships it. 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/atuin/actions/runs/39567882355) on x64 and ARM64. |
-| fzf | `winget-wix-installer` | MSI proven: fork smoke run builds both MSIs as release.yml does (WiX moved to a Windows job; it does not run on macOS) and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/fzf/actions/runs/37306258749)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). PR next; fzf's template requires the description in your own words with real-world context. 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/fzf/actions/runs/39567886465) on x64 and ARM64. |
-| Yazi | `winget-wix-installer` | MSI proven: `cargo xtask dist` now builds it (the WIP's separate step had failed silently every time); fork smoke installs `yazi` and `ya`, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/yazi/actions/runs/37309773805)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). Yazi's AI policy needs a design issue approved first and human-written issue, PR and commit text. 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/yazi/actions/runs/39567889770) on x64 and ARM64. |
-| zoxide | `winget-wix-installer` | MSI proven in CI and on a real x64 machine, and #1180's SSH failure reproduced with the portable install. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/zoxide/actions/runs/39567897889) on x64 and ARM64. |
+| Atuin | `winget-msi` (PR #4527) | MSI proven: redone on current main with cargo-dist 0.31.0 (`atuin-server` keeps its installers); fork smoke with the ARM64 commit builds and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/atuin/actions/runs/37311895415)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). With the ARM64 change, `windows-11-arm` needs WiX 3.14.1 installed (cargo-dist `github-build-setup`); see the branch notes. Atuin has no winget automation: its winget-pkgs manifest is updated by a community member, so the MSI also needs adding there after the first release that ships it. 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/atuin/actions/runs/39567882355) on x64 and ARM64. 2026-10-23: PR #4527 opened; the MSI now installs `LICENSE` ([run](https://github.com/meop/atuin/actions/runs/40029066758)). |
+| fzf | `winget-msi` (issue #4943) | MSI proven: fork smoke run builds both MSIs as release.yml does (WiX moved to a Windows job; it does not run on macOS) and installs, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/fzf/actions/runs/37306258749)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/fzf/actions/runs/39567886465) on x64 and ARM64. 2026-10-23: fzf limits PRs to collaborators, so issue #4943 offers the branch. |
+| Yazi | `winget-msi` (issue #4440) | MSI proven: `cargo xtask dist` now builds it (the WIP's separate step had failed silently every time); fork smoke installs `yazi` and `ya`, runs over SSH and uninstalls on x64 and ARM64 ([run](https://github.com/meop/yazi/actions/runs/37309773805)); on glass the portable install fails over elevated SSH and the MSI works (2026-10-05). Yazi's AI policy needs a design issue approved first and human-written issue, PR and commit text. 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/yazi/actions/runs/39567889770) on x64 and ARM64. 2026-10-23: design issue #4440 opened; after approval, rewrite the commit message yourself, rebase, and fill in the CHANGELOG PR number. |
+| zoxide | `winget-msi` (PR #1345) | MSI proven in CI and on a real x64 machine, and #1180's SSH failure reproduced with the portable install. The maintainer asked for this PR ([#1180](https://github.com/ajeetdsouza/zoxide/issues/1180)). 2026-10-21: rebased onto upstream; smoke re-run [passed](https://github.com/meop/zoxide/actions/runs/39567897889) on x64 and ARM64. 2026-10-22: PR #1345 opened. After it ships, check the winget-pkgs PR matches the tested manifest. |
 
 ## Backlog
 
@@ -178,9 +193,6 @@ descr = "Intuitive find and replace on the command line, a sed alternative."
 uri = "github.com/koalaman/shellcheck"
 descr = "Static analysis tool for shell scripts."
 
-[typos]
-uri = "github.com/crate-ci/typos"
-descr = "Source code spell checker."
 
 [vhs]
 uri = "github.com/charmbracelet/vhs"
@@ -202,17 +214,18 @@ work.
 
 | Project | Clone | Fork | Branches |
 | --- | --- | --- | --- |
-| Atuin | yes | yes | `dist/windows-arm64-native` (proven, awaiting your PR), `winget-wix-installer` |
+| Atuin | yes | yes | `dist/windows-arm64-native` (proven, awaiting your PR), `winget-msi` (PR #4527), `winget-wix-installer`, `winget-wix-smoke` (fork-only) |
 | bottom | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your issue) |
 | Charm meta | yes | yes | none (for the Gum/VHS change) |
 | Delta | yes | yes | `ci/windows-arm64-release-pr` (PR #2267), `ci/linux-arm64-musl-release-pr` (PR #2268) |
 | dust | yes | yes | `ci/windows-arm64-gnullvm` (PR #632) |
 | fd | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your issue) |
-| fzf | yes | yes | `winget-wix-installer` |
+| fzf | yes | yes | `winget-msi` (issue #4943), `winget-wix-installer`, `winget-wix-smoke` (fork-only) |
 | GHC | yes (from gitlab.haskell.org) | no; your gitlab.haskell.org account needs verification first (steps in the branch's `windows-aarch64/TODO.md`) | `wip/windows-aarch64-native` (local; native Windows ARM64 GHC) |
 | ghc-windows-aarch64 | yes | own repo | Public test repo for the GHC branch's Windows AArch64 builds: releases hold the bindist, `test-ghc.yml` checks it on `windows-11-arm` |
 | Gum, VHS | yes | yes | `windows-arm64-release` (fork smoke for the meta change) |
 | hexyl | yes | yes | `ci/linux-arm64-musl-release-pr` (PR #292); PR #291's branch on the fork only |
+| Komac | yes | yes | `fix-update-nested-files` (PR #1934), `merge-previous-installers` (PR #1935) |
 | lsd | yes | yes | `ci/windows-arm64-gnullvm` (PR #1244); PR #1237's branch on the fork only |
 | OpenCode | yes | no | none |
 | ouch | yes | yes | `windows-arm64-gnullvm` (awaiting issue #1094) |
@@ -221,8 +234,7 @@ work.
 | ripgrep | yes | yes | `ci/windows-arm64-gnullvm` (awaiting your PR) |
 | SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |
 | Starship | yes | yes | `linux-arm64-gnu-smoke` |
-| Typos | yes | yes | `ci/platform-release-matrix` (PR #1602) |
 | Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
-| xan | yes | yes | `ci/arm64-release-targets` (PR #1186, merged) |
-| Yazi | yes | yes | `winget-wix-installer` |
-| zoxide | yes | yes | `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
+| winget-manifest-test | yes | own repo | Public test repo for winget manifests: release `test-assets` holds the test ZIPs and MSIs, which Komac PR #1935's results link to |
+| Yazi | yes | yes | `winget-msi` (issue #4440), `winget-wix-installer`, `winget-wix-smoke` (fork-only) |
+| zoxide | yes | yes | `winget-msi` (PR #1345), `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |

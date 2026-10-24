@@ -255,6 +255,10 @@ uri = "github.com/tree-sitter/tree-sitter"
 descr = "Incremental parsing system for programming tools."
 aliases = ["tree-sitter-cli"]
 
+[typos]
+uri = "github.com/crate-ci/typos"
+descr = "Source code spell checker."
+
 [uv]
 uri = "github.com/astral-sh/uv"
 descr = "An extremely fast Python package and project manager."

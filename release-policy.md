@@ -119,7 +119,8 @@ a static musl build.
   discussion, unsubmitted proven work, or a handoff branch.
 - Delete smoke and test branches once their runs are cited; Actions runs stay
   viewable after the branch is gone. Delete the fork and clone once the work is
-  merged or abandoned.
+  merged or abandoned, even when an upstream PR links to the fork's runs: links
+  can go dead.
 - Work that needs real Windows ARM64 hardware is handed to the Windows ARM64
   host as a fork branch with a TODO file and a fork pull request, as restic's
   `windows-arm64-release` branch does.
