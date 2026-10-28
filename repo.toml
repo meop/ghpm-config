@@ -56,13 +56,13 @@ descr = "Send files between computers over an end-to-end encrypted relay."
 uri = "github.com/rs/curlie"
 descr = "Curl frontend with HTTPie-style request syntax and formatted output."
 
+[delish]
+uri = "github.com/meop/delish"
+descr = "Runs commands and shells in the logged-in desktop session, over ssh too."
+
 [deno]
 uri = "github.com/denoland/deno"
 descr = "A modern runtime for JavaScript and TypeScript."
-
-[deskpty]
-uri = "github.com/meop/deskpty"
-descr = "Runs commands and shells in the logged-in desktop session, over ssh too."
 
 [difftastic]
 uri = "github.com/Wilfred/difftastic"

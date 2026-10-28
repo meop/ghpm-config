@@ -40,8 +40,8 @@ are in [release-policy.md](release-policy.md).
 | codex | registry | rust-v0.162.0-alpha.9 (2026-10-03) | MSVC, plain | MSVC, plain | GNU, musl, plain | GNU, musl, plain | yes | GitHub Actions |
 | croc | registry | v11.5.4 (2026-09-26) | yes | yes | yes | yes | yes | GitHub Actions |
 | curlie | registry | v1.8.2 (2025-03-07) | yes | yes | yes | yes | yes | rs |
+| delish | registry | v0.2.0 (2026-10-28) | yes | yes | yes | yes | yes | GitHub Actions |
 | delta | pending | 0.20.1 (2026-10-04) | MSVC | **missing** | GNU, musl | GNU | yes | GitHub Actions |
-| deskpty | registry | v0.1.0 (2026-10-22) | yes | yes | yes | yes | yes | GitHub Actions |
 | deno | registry | v2.9.7 (2026-09-17) | MSVC | MSVC | GNU | GNU | yes | GitHub Actions |
 | difftastic | registry | 0.71.0 (2026-09-18) | MSVC | MSVC | GNU, musl | GNU | yes | GitHub Actions |
 | direnv | registry | v2.37.1 (2025-07-20) | yes | yes | yes | yes | yes | GitHub Actions |
