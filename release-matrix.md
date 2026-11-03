@@ -3,7 +3,7 @@
 Release variants of every project in `repo.toml` and every pending entry in
 [release-tracking.md](release-tracking.md#pending-registry-entries), from each
 project's latest GitHub release as of 2026-10-04; delta, gdu, hyperfine, qsv
-and typos refreshed 2026-10-06, atuin and typos 2026-10-23. The rules for judging these
+and typos refreshed 2026-10-06, typos 2026-10-23, atuin, btm and dust 2026-11-02. The rules for judging these
 are in [release-policy.md](release-policy.md).
 
 ## Legend
@@ -27,10 +27,10 @@ are in [release-policy.md](release-policy.md).
 | actionlint | registry | v1.7.12 (2026-03-30) | yes | yes | yes | yes | yes | GitHub Actions |
 | age | registry | v1.3.2 (2026-08-29) | yes | yes | yes | yes | yes | GitHub Actions |
 | ast-grep | registry | 0.45.3 (2026-08-31) | MSVC | MSVC | GNU | GNU | yes | GitHub Actions |
-| atuin | pending | v18.24.2 (2026-10-22) | MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
+| atuin | pending | v18.24.4 (2026-10-30) | MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
 | bat | registry | v0.26.1 (2025-12-02) | MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | biome | registry | @biomejs/biome@2.5.15 (2026-09-30) | yes | yes | musl, plain | musl, plain | yes | GitHub Actions |
-| btm | registry | 0.14.9 (2026-08-27) | GNU, MSVC | MSVC | GNU, musl | GNU, musl, plain | yes | GitHub Actions |
+| btm | registry | 0.15.0 (2026-11-01) | GNU, MSVC | gnullvm, MSVC | GNU, musl | GNU, musl, plain | yes | GitHub Actions |
 | bun | registry | bun-v1.4.2 (2026-09-05) | yes | yes | musl, plain | musl, plain | yes | dylan-conway |
 | cabal | pending | cabal-install-v3.18.2.0 (2026-09-30) | MinGW | **missing** | yes | yes | yes | GitHub Actions |
 | caddy | registry | v2.11.7 (2026-10-03) | yes | yes | yes | yes | yes | GitHub Actions |
@@ -49,7 +49,7 @@ are in [release-policy.md](release-policy.md).
 | dprint | registry | 0.60.1 (2026-10-03) | MSVC | MSVC | GNU, musl, plain | GNU, musl, plain | yes | GitHub Actions |
 | dua | registry | v2.45.1 (2026-09-30) | MSVC | MSVC | musl | musl | yes | GitHub Actions |
 | duf | registry | v0.9.1 (2025-09-08) | yes | yes | yes | yes | yes | muesli |
-| dust | registry | v1.2.6 (2026-09-16) | GNU, MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
+| dust | registry | v1.2.7 (2026-11-01) | GNU, MSVC | gnullvm, MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | fastfetch | registry | 2.69.0 (2026-09-25) | MinGW-Clang | MinGW-Clang | musl, plain | yes | yes | GitHub Actions |
 | fd | registry | v10.5.0 (2026-08-26) | GNU, MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | fzf | registry | v0.74.4 (2026-09-12) | yes | yes | yes | yes | yes | junegunn |
@@ -130,6 +130,7 @@ loader and are not portable static binaries.
 
 | Project | Note |
 | --- | --- |
+| btm | The Windows ARM64 `gnullvm` binary imports `libunwind.dll` and fails to start without MSYS2 (see [release-policy.md](release-policy.md#windows-abi-parity)). Its MSVC build is unaffected. |
 | cabal | GitHub release assets began with 3.18; earlier releases were on haskell.org. Windows x64 is a MinGW build. |
 | chezmoi | Ships glibc, musl, and static Go builds for Linux x64; the plain Linux ARM64 build is static Go, so no libc gap. |
 | codex | The latest unmarked release is an alpha tag; stable `rust-v*` releases ship the same platforms. |
