@@ -222,7 +222,7 @@ work.
 | Project | Clone | Fork | Branches |
 | --- | --- | --- | --- |
 | Atuin | yes | yes | `dist/windows-arm64-native` (PR #4575), `dist/windows-arm64-native-smoke`, `dist/windows-arm64-msi-smoke` (both fork-only) |
-| bottom | yes | yes | `ci/windows-gnullvm-crt-static` (PR #2302, merged), `windows-arm64-crt-static-smoke` (fork-only); both can go |
+| bottom | yes | yes | none |
 | Charm meta | yes | yes | none (for the Gum/VHS change) |
 | Delta | yes | yes | `ci/windows-arm64-release-pr` (PR #2267), `ci/linux-arm64-musl-release-pr` (PR #2268) |
 | fzf | yes | yes | `winget-msi` (issue #4943, base of PR #4948), `winget-wix-installer`, `winget-wix-smoke` (fork-only) |
