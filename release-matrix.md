@@ -3,7 +3,7 @@
 Release variants of every project in `repo.toml` and every pending entry in
 [release-tracking.md](release-tracking.md#pending-registry-entries), from each
 project's latest GitHub release as of 2026-10-04; delta, gdu, hyperfine, qsv
-and typos refreshed 2026-10-06, typos 2026-10-23, atuin, btm and dust 2026-11-02. The rules for judging these
+and typos refreshed 2026-10-06, typos 2026-10-23, btm and dust 2026-11-02, and atuin, fd and mise 2026-11-05. The rules for judging these
 are in [release-policy.md](release-policy.md).
 
 ## Legend
@@ -27,7 +27,7 @@ are in [release-policy.md](release-policy.md).
 | actionlint | registry | v1.7.12 (2026-03-30) | yes | yes | yes | yes | yes | GitHub Actions |
 | age | registry | v1.3.2 (2026-08-29) | yes | yes | yes | yes | yes | GitHub Actions |
 | ast-grep | registry | 0.45.3 (2026-08-31) | MSVC | MSVC | GNU | GNU | yes | GitHub Actions |
-| atuin | pending | v18.24.4 (2026-10-30) | MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
+| atuin | pending | v18.24.5 (2026-11-04) | MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
 | bat | registry | v0.26.1 (2025-12-02) | MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | biome | registry | @biomejs/biome@2.5.15 (2026-09-30) | yes | yes | musl, plain | musl, plain | yes | GitHub Actions |
 | btm | registry | 0.15.0 (2026-11-01) | GNU, MSVC | gnullvm, MSVC | GNU, musl | GNU, musl, plain | yes | GitHub Actions |
@@ -51,7 +51,7 @@ are in [release-policy.md](release-policy.md).
 | duf | registry | v0.9.1 (2025-09-08) | yes | yes | yes | yes | yes | muesli |
 | dust | registry | v1.2.7 (2026-11-01) | GNU, MSVC | gnullvm, MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | fastfetch | registry | 2.69.0 (2026-09-25) | MinGW-Clang | MinGW-Clang | musl, plain | yes | yes | GitHub Actions |
-| fd | registry | v10.5.0 (2026-08-26) | GNU, MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
+| fd | registry | v10.5.1 (2026-11-04) | GNU, MSVC | gnullvm, MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | fzf | registry | v0.74.4 (2026-09-12) | yes | yes | yes | yes | yes | junegunn |
 | gdu | registry | v5.38.0 (2026-10-05) | yes | yes | yes | yes | yes | GitHub Actions |
 | git-lfs | registry | v3.8.0 (2026-08-28) | yes | yes | yes | yes | yes | chrisd8088 |
@@ -72,7 +72,7 @@ are in [release-policy.md](release-policy.md).
 | llama.cpp | registry | b11382 (2026-10-04) | yes | yes | yes | yes | yes | GitHub Actions |
 | lsd | pending | v1.2.0 (2025-10-12) | GNU, MSVC | **missing** | GNU, musl | GNU, musl | yes | GitHub Actions |
 | mdbook | pending | v0.5.4 (2026-07-06) | MSVC | **missing** | GNU, musl | musl | yes | GitHub Actions |
-| mise | registry | v2026.10.1 (2026-10-03) | yes | yes | musl, plain | musl, plain | yes | mise-en-dev |
+| mise | registry | v2026.11.2 (2026-11-05) | yes | yes | musl, plain | musl, plain | yes | mise-en-dev |
 | nerd-fonts | registry | v3.5.1 (2026-08-21) | n/a | n/a | n/a | n/a | n/a | — |
 | nu | registry | 0.116.0 (2026-09-26) | MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | nvim | registry | v0.12.5 (2026-08-23) | MSVC | MSVC | yes | yes | yes | GitHub Actions |
