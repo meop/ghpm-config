@@ -124,9 +124,9 @@ descr = "Fast parallel runner for dozens of Go linters."
 uri = "github.com/goreleaser/goreleaser"
 descr = "Builds, packages, and publishes releases for Go projects."
 
-[gotm]
-uri = "github.com/meop/gotm"
-descr = "Go toolchain manager, keeping each added go at its pinned release."
+[goup]
+uri = "github.com/meop/goup"
+descr = "Go toolchain installer, keeping one go on the channel you pick, like rustup."
 
 [grpcurl]
 uri = "github.com/fullstorydev/grpcurl"
