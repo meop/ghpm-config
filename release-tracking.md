@@ -64,8 +64,8 @@ so offer `pacman` first.
 
 | Project | Branch | Change | Proof | Next step |
 | --- | --- | --- | --- | --- |
-| zoxide | `winget-wix-installer` | WiX MSI beside the portable ZIP, as Starship ships. | On x64 and real ARM64 Windows the MSI installs a real `zoxide.exe` of the right architecture, the machine PATH finds it, it runs over SSH, and uninstall is clean ([run](https://github.com/meop/zoxide/actions/runs/37183594306)). A winget-style symlink on the machine PATH also ran over SSH on the runner, so CI does not reproduce #1180; On glass the MSI installs, runs over SSH and uninstalls cleanly. #1180 is reproduced (2026-10-05, `windows-msi-test/repro-ssh.ps1`): a portable install made from a normal desktop session leaves a user-created link, and an administrator's elevated SSH session refuses to follow it (error 448, Windows redirection trust); the MSI install has no link and works. | PR (the maintainer asked for it in #1180); the reproduction script is reusable for the fzf, yazi and Atuin MSIs. Real-machine test steps are on fork branch `winget-wix-smoke` (`WINDOWS-MSI-TEST.md`, fork PR `meop/zoxide#1`). |
-| Starship | `linux-arm64-gnu-smoke` | Native Linux ARM64 GNU release lane. | [Passed](https://github.com/meop/starship/actions/runs/33569201148) 2026-09-01. | Low value: ARM64 already ships a static musl build. |
+| zoxide | `winget-msi` (PR #1345; the earlier `winget-wix-installer` deleted 2026-11-09) | WiX MSI beside the portable ZIP, as Starship ships. | On x64 and real ARM64 Windows the MSI installs a real `zoxide.exe` of the right architecture, the machine PATH finds it, it runs over SSH, and uninstall is clean ([run](https://github.com/meop/zoxide/actions/runs/37183594306)). A winget-style symlink on the machine PATH also ran over SSH on the runner, so CI does not reproduce #1180; On glass the MSI installs, runs over SSH and uninstalls cleanly. #1180 is reproduced (2026-10-05, `windows-msi-test/repro-ssh.ps1`): a portable install made from a normal desktop session leaves a user-created link, and an administrator's elevated SSH session refuses to follow it (error 448, Windows redirection trust); the MSI install has no link and works. | PR (the maintainer asked for it in #1180); the reproduction script is reusable for the fzf, yazi and Atuin MSIs. Real-machine test steps are on fork branch `winget-wix-smoke` (`WINDOWS-MSI-TEST.md`, fork PR `meop/zoxide#1`). |
+| Starship | `linux-arm64-gnu-smoke` (deleted 2026-11-09) | Native Linux ARM64 GNU release lane. | [Passed](https://github.com/meop/starship/actions/runs/33569201148) 2026-09-01. | Low value: ARM64 already ships a static musl build. |
 
 ## Handoffs and blocked work
 
@@ -225,7 +225,7 @@ work.
 | bottom | yes | yes | none |
 | Charm meta | yes | yes | none (for the Gum/VHS change) |
 | Delta | yes | yes | `ci/windows-arm64-release-pr` (PR #2267), `ci/linux-arm64-musl-release-pr` (PR #2268) |
-| fzf | yes | yes | `winget-msi` (issue #4943, base of PR #4948), `winget-wix-installer`, `winget-wix-smoke` (fork-only) |
+| fzf | yes | yes | none (PR #4948 merged, in 0.75.0; branches deleted 2026-11-09) |
 | GHC | yes (from gitlab.haskell.org) | no; your gitlab.haskell.org account needs verification first (steps in the branch's `windows-aarch64/TODO.md`) | `wip/windows-aarch64-native` (local; native Windows ARM64 GHC) |
 | ghc-windows-aarch64 | yes | own repo | Public test repo for the GHC branch's Windows AArch64 builds: releases hold the bindist, `test-ghc.yml` checks it on `windows-11-arm` |
 | Ghostty website | yes | yes | `docs/config-load-order` (website PR #500) |
@@ -240,8 +240,8 @@ work.
 | Restic | yes | yes | `windows-arm64-release` (handoff; fork PR `meop/restic#1`) |
 | ripgrep | yes | yes | `ci/windows-arm64-gnullvm` (PR #3579), `windows-arm64-gnullvm-smoke` (fork-only) |
 | SD | yes | yes | `ci/windows-arm64-release-pr` (PR #354) |
-| Starship | yes | yes | `linux-arm64-gnu-smoke` |
+| Starship | yes | yes | none (`linux-arm64-gnu-smoke` deleted 2026-11-09) |
 | Vivid | yes | yes | `ci/windows-arm64-gnullvm` (PR #245) |
 | winget-manifest-test | yes | own repo | Public test repo for winget manifests: release `test-assets` holds the test ZIPs and MSIs, which Komac PR #1935's results link to |
 | Yazi | yes | yes | none |
-| zoxide | yes | yes | `winget-msi` (PR #1345), `winget-wix-installer`, `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
+| zoxide | yes | yes | `winget-msi` (PR #1345), `winget-wix-smoke` (fork-only; real-machine test notes, fork PR `meop/zoxide#1`) |
