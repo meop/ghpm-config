@@ -1,10 +1,9 @@
 # Release matrix
 
 Release variants of every project in `repo.toml` and every pending entry in
-[release-tracking.md](release-tracking.md#pending-registry-entries), from each
-project's latest GitHub release as of 2026-10-04; delta, gdu, hyperfine, qsv
-and typos refreshed 2026-10-06, typos 2026-10-23, btm and dust 2026-11-02, and atuin, fd and mise 2026-11-05. The rules for judging these
-are in [release-policy.md](release-policy.md).
+[release-tracking.md](release-tracking.md#pending-registry-entries), from each project's latest GitHub release when it
+was last checked; each row's Release column names that release and its date. The rules for judging these are in
+[release-policy.md](release-policy.md).
 
 ## Legend
 
