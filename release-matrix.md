@@ -107,6 +107,7 @@ was last checked; each row's Release column names that release and its date. The
 | yazi | registry | v26.9.1 (2026-09-01) | MSVC | MSVC | GNU, musl | GNU, musl | yes | GitHub Actions |
 | yq | registry | v4.54.1 (2026-09-29) | yes | yes | yes | yes | yes | GitHub Actions |
 | zellij | registry (exception) | v0.45.1 (2026-08-28) | MSVC | **missing** | musl | musl | yes | GitHub Actions |
+| zcode | registry | v3.17.2-sea (2026-11-11) | yes | yes | yes | yes | yes | GitHub Actions |
 | zoxide | registry | v0.10.0 (2026-07-04) | MSVC | MSVC | musl | musl, plain | yes | GitHub Actions |
 
 ## Notes
