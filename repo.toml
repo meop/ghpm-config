@@ -280,7 +280,7 @@ uri = "github.com/zellij-org/zellij"
 descr = "Terminal workspace and multiplexer with batteries included."
 
 [zcode]
-uri = "github.com/meop/zcode-cli"
+uri = "github.com/meop/ZCode"
 descr = "Z.ai's ZCode coding agent CLI, built as a single executable."
 aliases = ["zcode-cli"]
 
